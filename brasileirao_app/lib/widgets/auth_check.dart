@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+import '../pages/login_page.dart';
 import '../services/auth_service.dart';
 
 class AuthCheck extends StatefulWidget {
@@ -30,6 +32,5 @@ class _AuthCheckState extends State<AuthCheck> {
         child: CircularProgressIndicator(),
       ),
     );
-  }
   }
 }
