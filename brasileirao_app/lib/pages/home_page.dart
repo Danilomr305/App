@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-import '../components/bottom_nav_bar.dart';
+import '../models/time.dart';
+import '../repository/times_repository.dart';
+import '../widgets/brasao.dart';
 
-// ignore: unnecessary_import
 
+
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -11,56 +16,70 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
-  // navigate bottom bar
-  // ignore: unused_field
-  int _selectedIndex = 0;
-  void navigateBottomBar(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    PreferenciaTema.setTema();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-   WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-   PreferenciaTema.setTema();
-  }
-
-
-  // pages
-  // ignore: unused_field
-  final List <Widget> _pages = [
-    // times page
-    TimesPage(),
-    
-  ];
+class _HomePageState extends State<HomePage> {
+  var controller = ThemeController.to;
 
   @override
   Widget build(BuildContext context) {
-      return 
-         ValueListenableBuilder(
-          valueListenable: PreferenciaTema.tema,
-          builder: (BuildContext context, Brightness tema, _) => Scaffold(
-              
-              backgroundColor: blackgroundColor,
-              bottomNavigationBar: MyBottomNavBar(
-                onTabChange: (index) => navigateBottomBar(index),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Brasileirão',
+          style: TextStyle(
+            fontSize: 25.0,
+            fontWeight: FontWeight.w900,
+            fontFamily: AutofillHints.birthday,
+          ),
+        ),
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert_outlined),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: ListTile(
+                  leading: Obx(() => controller.IsDart.value
+                  ? const Icon(Icons.brightness_7_outlined)
+                  : const Icon(Icons.brightness_2_outlined),),
+                title: Obx(() => 
+                controller.IsDart.value ? const Text('Ligth') : const Text('Dark')),
+                onTap: () => controller.changeTheme(),
+                ),
               ),
-              body: _pages[_selectedIndex],
-            ),
-         );
+            ],
+          ),
+        ],
+      ),
+      body: Consumer<TimesRepository>(
+        builder: (context, repositorio, child){
+          return ListView.separated(
+          itemCount: repositorio.times.length,
+          itemBuilder: (BuildContext context, int time) {
+            final List<Time> tabela = repositorio.times;
+            return ListTile(
+              leading: Brasao(
+                image: tabela[time].brasao,
+                width:40,
+              ),
+              title: Text(tabela[time].nome),
+              trailing: Text(
+                tabela[time].pontos.toString(),
+              ),
+              subtitle: Text('Titulos: ${tabela[time].titulo.length}'),
+              onTap: () {
+                Get.to(() => TimePage(
+                    key: Key(tabela[time].nome),
+                    time: tabela[time],
+                  ),
+                );
+
+              },
+            );
+          },
+          separatorBuilder: (_, __) => const Divider(),
+          padding: const EdgeInsets.all(16),
+        );
+        },
+      )
+    );
   }
 }

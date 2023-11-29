@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+// ignore: unused_import
 import '../components/bottom_nav_bar.dart';
 
 // ignore: must_be_immutable
