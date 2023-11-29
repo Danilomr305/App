@@ -1,8 +1,5 @@
-import 'package:coffee/pages/home_page.dart';
+import '../pages/home_page.dart';
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
