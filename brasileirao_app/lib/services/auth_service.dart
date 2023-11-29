@@ -58,4 +58,4 @@ class AuthService extends ChangeNotifier {
   logout() async {
     await _auth.signOut(); 
   }
-} 
+}

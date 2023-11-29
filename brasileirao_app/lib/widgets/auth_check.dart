@@ -1,8 +1,5 @@
-// ignore: unnecessary_import
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../pages/home_page.dart';
 import '../pages/login_page.dart';
 import '../services/auth_service.dart';
@@ -29,6 +26,7 @@ class _AuthCheckState extends State<AuthCheck> {
       // ignore: curly_braces_in_flow_control_structures
       return  const HomePage();
   }
+  
   loading() {
     return const Scaffold(
       body: Center(
