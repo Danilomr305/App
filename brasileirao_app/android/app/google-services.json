@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "968177324288",
+    "project_id": "brasileirao-b4985",
+    "storage_bucket": "brasileirao-b4985.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968177324288:android:d12c461033352fde18a3e5",
+        "android_client_info": {
+          "package_name": "com.example.brasileirao_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbXrogtvQSCDNMBUGpjagaN5XySo3XEkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
