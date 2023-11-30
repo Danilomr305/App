@@ -43,6 +43,7 @@ dependencies:
   get: ^4.6.5
   sqflite: ^2.3.0
   shared_preferences: ^2.2.2
+  firebase_core: ^2.24.0
 
 dev_dependencies:
   flutter_test:
