@@ -1,14 +1,13 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class GridItems extends StatelessWidget {
-  GridItems({super.key});
-
   var pNames = [
-    "appleWatchM2",
-    "WhiteTshirt",
-    "NikeShoe",
-    "EarHeadphone",
+    "Apple Watch -M2",
+    "Ear Headphone",
+    "Nike Shoe",
+    "White Tshirt",
   ];
 
   @override
@@ -19,27 +18,25 @@ class GridItems extends StatelessWidget {
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 0.7,
-        crossAxisCount:  2,
+        crossAxisCount: 2
       ),
       itemBuilder: (context, index) {
         return InkWell(
-          onTap: () {
-
-          },
+          onTap: () {},
           child: Container(
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(15),
               color: const Color(0xFFD4ECF7),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
-                  blurRadius: 8,
-                  spreadRadius: 2,
-                )
-              ]
+                  blurRadius: 4,
+                  spreadRadius: 2
+                ),
+              ],
             ),
-            child:  Padding(
+            child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
@@ -47,7 +44,7 @@ class GridItems extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "30% off",
+                        "30% 0ff",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,
@@ -66,11 +63,8 @@ class GridItems extends StatelessWidget {
 
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: 
-                    Image.asset(
-                      "imagens/${pNames[index]}.png",
-                      height: 100,
-                      width: 100,
+                    child: Image.asset(
+                      "imagens/${pNames[index]}.jpg"
                     ),
                   ),
                 ],

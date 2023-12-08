@@ -18,19 +18,19 @@ class HomeScreen extends StatelessWidget {
     ];
 
   var imageList = [
-    "imagens/slide1.jpg",
-    "imagens/slide3.jpg",
-    "imagens/slide4.jpg",
+    "imagens/slide01.jpg",
+    "imagens/slide03.jpg",
+    "imagens/slide04.jpg",
   ];
 
   var iconImageList = [
-    "imagens/icon1.jpg",
-    "imagens/icon2.jpg",
-    "imagens/icon3.jpg",
-    "imagens/icon4.jpg",
-    "imagens/icon5.jpg",
-    "imagens/icon6.jpg",
-    "imagens/icon7.jpg",
+    "imagens/icon01.jpg",
+    "imagens/icon02.jpg",
+    "imagens/icon03.jpg",
+    "imagens/icon04.jpg",
+    "imagens/icon05.jpg",
+    "imagens/icon06.jpg",
+    "imagens/icon07.jpg",
   ];
 
     return SingleChildScrollView(
@@ -203,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   for (var i = 0; i < 7; i++)
                   Container(
-                    height: 50,
+                    height: 55,
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: const Color(0xFFD4ECF7),
