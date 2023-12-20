@@ -45,11 +45,11 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   padding:  const EdgeInsets.all(10),
                   decoration:  BoxDecoration(
-                    color:  const Color(0xFFD4ECF7),
+                    color:  Colors.black,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.black26,
+                        color: Colors.brown,
                         blurRadius: 4,
                         spreadRadius: 2,
                       )

@@ -15,7 +15,7 @@ class _ScreenPageState extends State<ScreenPage> {
   late int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget> [
-    const HomePage(),
+    HomePage(),
     Container(),
     Container(),
     Container(),
@@ -24,26 +24,63 @@ class _ScreenPageState extends State<ScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreenAccent,
+      backgroundColor: Colors.white,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.lightGreenAccent,
+          color: Colors.black,
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
-              color: Colors.black45.withOpacity(2)
+              color: Colors.black45.withOpacity(0.2)
             )
           ]
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 15,
               vertical: 8
             ),
-            child: GNav(),
+            child: GNav(
+              rippleColor: Colors.black45,
+              hoverColor: Colors.black,
+              gap: 8,
+              activeColor: Colors.brown,
+              iconSize: 37,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 8,
+              ),
+              tabBackgroundColor: Colors.white,
+              color: Colors.white,
+              duration: const Duration(
+                milliseconds: 800
+              ),
+              tabs: const [
+                GButton(
+                  icon: LineIcons.home,
+                  text: "Home",
+                ),
+
+                GButton(
+                  icon: LineIcons.shoppingBag,
+                  text: "Cart",
+                ),
+
+                GButton(
+                  icon: LineIcons.heart,
+                  text: "Account",
+                ),
+              ],
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
             ),
+          ),
         ),
       ),
     );
