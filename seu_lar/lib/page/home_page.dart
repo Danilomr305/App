@@ -121,6 +121,69 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(left: 15),
+            child: Row(
+              children: [
+                for (int i = 0; i < 2; i++) 
+                Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(left: 10),
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  height: MediaQuery.of(context).size.height / 1.5,
+                  decoration: BoxDecoration(
+                    color: Colors.brown.shade400,
+                    borderRadius: BorderRadius.circular(22)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const  Text(
+                              "30% off the Black Fridey Collection",
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.white
+                              ),
+                            ),
+
+                            Container(
+                              width: 90,
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(22)
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  "Shop Now",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                )
+                              ),
+                            )
+                          ],
+                        )
+                      ),
+                      Image.asset(
+                        imageList[i],
+                        height: 180,
+                        width: 110,
+                          
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
