@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, unnecessary_import
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +64,44 @@ class GridWidets extends StatelessWidget {
                 color: Colors.black26,
                 blurRadius: 4,
                 spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding:const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "30% off",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12
+                      ),
+                    )
+                  ],
+                ),
 
-              )
-            ]
+                const SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: const  EdgeInsets.all(12),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context, 
+                      MaterialPageRoute(
+                        builder: (context) => ItemPage() 
+                        )
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       }
