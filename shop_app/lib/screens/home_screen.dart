@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15),
             child: Row(
               children: [
-                for(int i = 0; i<3; i++)
+                for (int i = 0; i<3; i++)
                 Container(
                   margin: const EdgeInsets.only(right: 10),
                   padding: const EdgeInsets.only(left: 10),

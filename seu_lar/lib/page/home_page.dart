@@ -2,6 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:line_icons/line_icon.dart';
+
+import '../widgets/grid_widgets.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -9,7 +13,7 @@ class HomePage extends StatelessWidget {
   var imageList = [
     "imagens/slide1.jpeg",
     "imagens/slide2.jpeg",
-    "imagens/slide3.jpeg",
+    "imagens/slide3.jpg",
   ];
 
   var iconImageList = [
@@ -18,7 +22,7 @@ class HomePage extends StatelessWidget {
     "imagens/icon3.png",
     "imagens/icon4.png",
     "imagens/icon5.png",
-    "imagans/icon6.png"
+    "imagens/icon6.png"
 
   ];
 
@@ -126,22 +130,22 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15),
             child: Row(
               children: [
-                for (int i = 0; i < 2; i++) 
+                for (int i = 0; i<2; i++) 
                 Container(
                   margin: const EdgeInsets.only(right: 10),
                   padding: const EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width / 1.5,
-                  height: MediaQuery.of(context).size.height / 1.5,
+                  height: MediaQuery.of(context).size.height / 5.5,
                   decoration: BoxDecoration(
                     color: Colors.brown.shade400,
-                    borderRadius: BorderRadius.circular(22)
+                    borderRadius: BorderRadius.circular(10)
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const  Text(
@@ -154,6 +158,7 @@ class HomePage extends StatelessWidget {
 
                             Container(
                               width: 90,
+                              margin:const EdgeInsets.all(10),
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
@@ -176,14 +181,86 @@ class HomePage extends StatelessWidget {
                         imageList[i],
                         height: 180,
                         width: 110,
-                          
                       )
                     ],
                   ),
                 )
               ],
             ),
-          )
+          ),
+
+          const SizedBox(
+            height: 30,
+          ),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Top Categories",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+
+                Text(
+                  "See All",
+                  style: TextStyle(
+                    color: Colors.black54
+                  ),
+                )
+              ],
+            ),
+          ),
+
+          const SizedBox(
+            height: 10,
+          ),
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  for (var i= 0; i < 6; i++)
+                  Container(
+                    height: 55,
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.brown.shade400,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 4,
+                          spreadRadius: 2,
+                        )
+                      ]
+                    ),
+
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        iconImageList[i]
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(
+            height: 10,
+          ),
+
+          GridWidets()
         ],
       ),
     );
