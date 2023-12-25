@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../page/item_page.dart';
+
 class GridWidets extends StatelessWidget {
   
   var pNames = [
@@ -85,20 +87,48 @@ class GridWidets extends StatelessWidget {
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
 
                 Padding(
-                  padding: const  EdgeInsets.all(12),
+                  padding: const  EdgeInsets.all(15),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(context, 
                       MaterialPageRoute(
-                        builder: (context) => ItemPage() 
+                        builder: (context) => const ItemPage() 
                         )
                       );
                     },
+                    child: Image.asset(
+                      "imagens/${pNames[index]}.jpeg",
+                      height: 150,
+                       alignment: Alignment.bottomLeft,
+                    ),
                   ),
+                ),
+
+                const SizedBox(
+                  height: 15,
+                ),
+                
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    
+                    Text(
+                      "Black Fridey",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15
+                      ),
+                    ),
+
+                    Icon(
+                      Icons.arrow_drop_down_circle_outlined,
+                      size: 25,
+                    )
+                  ],
                 ),
               ],
             ),

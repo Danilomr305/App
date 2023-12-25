@@ -65,8 +65,7 @@ class GridItems extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context, 
+                      Navigator.push( context, 
                         MaterialPageRoute(
                           builder: (context) => const ItemScreen() 
                         ),

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icon.dart';
 
 import '../widgets/grid_widgets.dart';
+import 'categories_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -246,8 +247,18 @@ class HomePage extends StatelessWidget {
 
                     child: Padding(
                       padding: const EdgeInsets.all(10),
-                      child: Image.asset(
-                        iconImageList[i]
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, 
+                          MaterialPageRoute(
+                              builder: (context) => const CategoriesPage()
+                            )
+                          );
+                        },
+
+                        child: Image.asset(
+                          iconImageList[i]
+                        ),
                       ),
                     ),
                   ),
