@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../page/item_page.dart';
 
 class GridWidets extends StatelessWidget {
-  
+
   var pNames = [
     "1 peça Luz de mesa",
     "Poltrona Pé Palito",
