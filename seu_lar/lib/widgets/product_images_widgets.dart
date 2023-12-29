@@ -12,13 +12,17 @@ class ProductImagesPage extends StatelessWidget {
     return ImageSlideshow(
       indicatorBackgroundColor: Colors.white,
       autoPlayInterval: 3000,
-      height: 300,
-      indicatorRadius: 4,
+      height: 230,
+      width: 400,
+      indicatorRadius: 7,
       isLoop: true,
       children: [ 
         Padding(
           padding: const EdgeInsets.all(10),
-          child: Image.asset("imagens/Rack Com Painel.jpeg"),
+          child: Image.asset(
+            "imagens/Rack Com Painel.jpeg",
+          ),
+          
         ),
 
         Padding(
@@ -38,7 +42,7 @@ class ProductImagesPage extends StatelessWidget {
 
         Padding(
           padding: const EdgeInsets.all(10),
-          child: Image.asset("imagens/Luminária LED"),
+          child: Image.asset("imagens/Luminária LED.jpeg"),
         )
       ],
     );

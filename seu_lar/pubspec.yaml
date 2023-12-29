@@ -39,6 +39,7 @@ dependencies:
   line_icons: ^2.0.3
   flutter_image_slideshow: ^0.1.6
   flutter_rating_bar: ^4.0.1
+  adaptive_dialog: ^1.10.1
 
 dev_dependencies:
   flutter_test:
