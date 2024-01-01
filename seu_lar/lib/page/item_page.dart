@@ -18,21 +18,6 @@ class _ItemPageState extends State<ItemPage> {
   @override
   Widget build(BuildContext context) {
 
-    showDialog(
-      context: context, 
-      builder: (context)=> AlertDialog(
-        title: Text(
-          "Successfully added to cart",
-          style: GoogleFonts.aclonica(
-            fontSize: 18,
-            fontWeight: FontWeight.w600
-          ),
-        ),
-        icon: const Icon(Icons.local_grocery_store_outlined),
-      ),
-    );
-
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -163,37 +148,26 @@ class _ItemPageState extends State<ItemPage> {
         ),
       ),
       
-      bottomNavigationBar: Container(
-        height: 60,
-        margin: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-          ),
-        child: Row(
-          children: [
-            InkWell(
-              onTap: () {},
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width / 1.5,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(22),
-                  color: Colors.black54,
-                ),
-                child: Center(
-                  child: FilledButton.tonal(
-                    onPressed: () => showAlert(context),
-                    child: const Text("Parabens pela compra!"),
-                  ),
-                ),
-              ),
-            )
-          ]
+      bottomNavigationBar: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context, 
+            builder: (context) => AlertDialog(
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }, 
+                  child: const Text('close'))
+              ],
+              title: const Text('Flutter Mapp'),
+              contentPadding: const EdgeInsets.all(10.0),
+              content: const Text('This is the Alert Dialog'),
+            ),
+          );
+        },
+        child: const Text('Show Alert Dialog'),
         ),
-      ),
     );
   }
-}
-
-showAlert(BuildContext context) {
 }
