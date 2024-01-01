@@ -1,13 +1,11 @@
 // ignore_for_file: unused_import, unnecessary_import, unused_local_variable
 
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:seu_lar/widgets/product_images_widgets.dart';
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-
-
-
 
 class ItemPage extends StatefulWidget {
   const ItemPage({super.key});
@@ -20,26 +18,19 @@ class _ItemPageState extends State<ItemPage> {
   @override
   Widget build(BuildContext context) {
 
-    showAlert(BuildContext cxt) {
-      final alert = AlertDialog.adaptive(
-        title: const Text("Parabéns"),
-        content: Row(
-          children: [
-            Checkbox.adaptive(
-              value: true, 
-              onChanged: (_) {}),
-              const Text("Novo alerta adaptativo")
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(cxt).pop(), 
-            child: const Text('OK')
+    showDialog(
+      context: context, 
+      builder: (context)=> AlertDialog(
+        title: Text(
+          "Successfully added to cart",
+          style: GoogleFonts.aclonica(
+            fontSize: 18,
+            fontWeight: FontWeight.w600
           ),
-        ],
-      );
-      showAdaptiveDialog(context: ctx, builder:(_) => alert);
-    }
+        ),
+        icon: const Icon(Icons.local_grocery_store_outlined),
+      ),
+    );
 
 
     return Scaffold(
@@ -202,4 +193,7 @@ class _ItemPageState extends State<ItemPage> {
       ),
     );
   }
+}
+
+showAlert(BuildContext context) {
 }
