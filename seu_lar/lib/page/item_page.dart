@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, unnecessary_import, unused_local_variable
+// ignore_for_file: unused_import, unnecessary_import, unused_local_variable, no_leading_underscores_for_local_identifiers
 
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +17,35 @@ class ItemPage extends StatefulWidget {
 class _ItemPageState extends State<ItemPage> {
   @override
   Widget build(BuildContext context) {
+
+    Future<void> _dialogBuilder(BuildContext context) {
+      return showDialog(
+        context: context, 
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(
+              "Basic dialog",
+            ),
+            content: const Text(
+              "Parabéns"
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ), 
+                child: const Text(
+                  "Confirma"
+                ),
+              ),
+            ],
+          );
+        }
+      );
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -148,26 +177,59 @@ class _ItemPageState extends State<ItemPage> {
         ),
       ),
       
-      bottomNavigationBar: ElevatedButton(
-        onPressed: () {
-          showDialog(
-            context: context, 
-            builder: (context) => AlertDialog(
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  }, 
-                  child: const Text('close'))
-              ],
-              title: const Text('Flutter Mapp'),
-              contentPadding: const EdgeInsets.all(10.0),
-              content: const Text('This is the Alert Dialog'),
-            ),
-          );
-        },
-        child: const Text('Show Alert Dialog'),
+      bottomNavigationBar: Container(
+        height: 70,
+        margin: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 20
         ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+           //----------------------
+            InkWell(
+              onTap: () => _dialogBuilder(context),
+              child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width / 1.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black54,
+                ),
+                child: const Center(
+                  child: Text(
+                    "Add To Cart",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            InkWell(
+              onTap: () { },
+              child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width / 5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black54
+                ),
+                child: const Center(
+                  child: Icon(
+                    Icons.favorite_outline,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
