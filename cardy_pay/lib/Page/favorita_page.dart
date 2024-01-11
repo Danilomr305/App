@@ -10,6 +10,13 @@ class FavoritaPage extends StatefulWidget {
 class _FavoritaPageState extends State<FavoritaPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea( 
+        child: Container(
+          padding:const EdgeInsets.all(10),
+          color: Colors.white54,
+        )
+      ),
+    );
   }
 }

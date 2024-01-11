@@ -10,6 +10,16 @@ class CarteiraPage extends StatefulWidget {
 class _CarteiraPageState extends State<CarteiraPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea( 
+        child: Container(
+          padding:const EdgeInsets.all(10),
+          color: Colors.white70,
+          child: const Text(
+            "Welcone, Dnl!"
+          ),
+        )
+      ),
+    );
   }
 }

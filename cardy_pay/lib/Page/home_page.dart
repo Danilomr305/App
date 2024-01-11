@@ -65,6 +65,7 @@ class _HomePageState extends State<HomePage> {
             duration: const Duration(milliseconds: 500), 
             curve: Curves.ease);
         },
+        backgroundColor: Colors.black,
       ),
     );
   }
