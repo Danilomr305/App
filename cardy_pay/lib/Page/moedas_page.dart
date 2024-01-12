@@ -1,4 +1,5 @@
-// ignore_for_file: unused_import, prefer_const_constructors
+
+// ignore_for_file: unused_import
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,12 +48,11 @@ class _MoedasPageState extends State<MoedasPage> {
                   ],
                 ),
               ),
-            ],
-          ),
 
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
+
           const Padding(
             padding: EdgeInsets.only(
               left: 20
@@ -141,6 +141,8 @@ class _MoedasPageState extends State<MoedasPage> {
               ],
             ),
           ),
-        );
+        ]
+      ),
+    );
   }
 }
