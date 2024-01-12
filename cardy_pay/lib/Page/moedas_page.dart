@@ -1,4 +1,8 @@
+// ignore_for_file: unused_import, prefer_const_constructors
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icon.dart';
 
 class MoedasPage extends StatefulWidget {
   const MoedasPage({super.key});
@@ -11,36 +15,132 @@ class _MoedasPageState extends State<MoedasPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea( 
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    color: Colors.white54,
-                    child:const Text(
-                      'Welcome, Dnl!',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold
+    return SingleChildScrollView(
+      child: 
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 40,
+                  left: 8,
+                  right: 8
+
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      color: Colors.white54,
+                      child:const Text(
+                        'Welcome, Dnl!',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
-                  ),
 
-                  const Icon(
-                    Icons.bed_outlined,
-                    size: 50,
-                  )
-                ],
+                    const Icon(
+                      CupertinoIcons.bell,
+                      size: 45,
+                    )
+                  ],
+                ),
               ),
+            ],
+          ),
+
+          SizedBox(
+            height: 10,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 20
             ),
-          ],
-        )
-      ),
-    );
+            child:  Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "\$ 1553.00",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40
+                  ),
+                ),
+          
+                SizedBox(
+                  width: 8,
+                ),
+          
+                Text(
+                  "Balance",
+                  style: TextStyle(
+                    color: Colors.black26
+                  ),
+                )
+              ],
+            ),
+          ),
+
+
+
+          const SizedBox(
+            height: 20,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10
+            ),
+            child: Row(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Row(
+                    children: [
+                      for (int i = 0; i<1; i++)
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(left: 10),
+                        width: MediaQuery.of(context).size.width / 2.4,
+                        height: MediaQuery.of(context).size.height / 8.8,
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+          
+                const SizedBox(
+                  width: 1,
+                ),
+          
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Row(
+                    children: [
+                      for (int i = 0; i<1; i++)
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(left: 10),
+                        width: MediaQuery.of(context).size.width / 2.4,
+                        height: MediaQuery.of(context).size.height / 8.8,
+                        decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
   }
 }
