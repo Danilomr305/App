@@ -1,3 +1,5 @@
+// ignore: unnecessary_import
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CarteiraPage extends StatefulWidget {
@@ -12,12 +14,17 @@ class _CarteiraPageState extends State<CarteiraPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea( 
-        child: Container(
-          padding:const EdgeInsets.all(10),
-          color: Colors.white70,
-          child: const Text(
-            "Welcone, Dnl!"
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding:const EdgeInsets.all(10),
+              color: Colors.white70,
+              child: const Text(
+                "Welcone, Dnl!"
+              ),
+            ),
+          ],
         )
       ),
     );
