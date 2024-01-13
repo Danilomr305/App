@@ -61,7 +61,7 @@ class _MoedasPageState extends State<MoedasPage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "\$ 1553.00",
+                  "\$ 13,553.00",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40
@@ -69,13 +69,14 @@ class _MoedasPageState extends State<MoedasPage> {
                 ),
           
                 SizedBox(
-                  width: 8,
+                  width:8,
                 ),
           
                 Text(
                   "Balance",
                   style: TextStyle(
-                    color: Colors.black26
+                    color: Colors.black26,
+                    fontSize: 15
                   ),
                 )
               ],
@@ -109,6 +110,28 @@ class _MoedasPageState extends State<MoedasPage> {
                         decoration: BoxDecoration(
                           color: Colors.black26,
                           borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Positions"
+                                 ),
+
+                                 
+
+                                 
+                                  Icon(
+                                    Icons.arrow_forward_ios_outlined
+                                   ),
+                                 
+                              ],
+                            )
+                          ],
                         ),
                       )
                     ],

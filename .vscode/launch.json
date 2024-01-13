@@ -1,0 +1,68 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cardy_pay",
+            "cwd": "cardy_pay",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "cardy_pay (profile mode)",
+            "cwd": "cardy_pay",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "cardy_pay (release mode)",
+            "cwd": "cardy_pay",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "seu_lar",
+            "cwd": "seu_lar",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "seu_lar (profile mode)",
+            "cwd": "seu_lar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "seu_lar (release mode)",
+            "cwd": "seu_lar",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "shop_app",
+            "cwd": "shop_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "shop_app (profile mode)",
+            "cwd": "shop_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "shop_app (release mode)",
+            "cwd": "shop_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
