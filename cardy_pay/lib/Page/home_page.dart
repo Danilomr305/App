@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'package:cardy_pay/Page/carteira_page.dart';
+import '../Page/carteira_page.dart';
 import 'package:cardy_pay/Page/favorita_page.dart';
 import 'package:cardy_pay/Page/moedas_page.dart';
 import 'package:cardy_pay/models/preferencia_tema.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     const FavoritaPage(),
 
     // carteira da pessoal
-    const CarteiraPage(),
+     const CarteiraPage()
 
     
   ];

@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Cardy_Pay',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.black
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
       home: const HomePage(),
     );

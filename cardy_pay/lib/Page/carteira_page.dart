@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
 import '../configs/app_settings.dart';
 import '../models/posicao.dart';
 import '../repositories/conta_repositories.dart';
@@ -34,30 +35,32 @@ class _CarteiraPageState extends State<CarteiraPage> {
     setTotalCarteira();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        padding:const  EdgeInsets.only(top: 48),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 48, bottom: 8),
-              child: Text(
-                'Valor da Carteira',
-                style: TextStyle(
-                  fontSize: 18,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding:const  EdgeInsets.only(top: 48),
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 48, bottom: 8),
+                child: Text(
+                  'Valor da Carteira',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              real.format(totalCarteira),
-              style: const TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -1.5,
+              Text(
+                real.format(totalCarteira),
+                style: const TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -1.5,
+                ),
               ),
-            ),
-            loadGrafico(),
-            loadHistorico()
-          ],
+              loadGrafico(),
+              loadHistorico()
+            ],
+          ),
         ),
       ),
     );
