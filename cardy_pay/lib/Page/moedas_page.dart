@@ -195,7 +195,8 @@ class _MoedasPageState extends State<MoedasPage> {
                     Text(
                       'Token Bonus',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20
                       ),
                     ),
               
@@ -208,7 +209,7 @@ class _MoedasPageState extends State<MoedasPage> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                        backgroundColor: Colors.black
+                        backgroundColor: Colors.black,1
                       ),
                     )
                   ],

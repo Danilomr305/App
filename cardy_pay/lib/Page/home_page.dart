@@ -1,73 +1,78 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: unused_import
 
-import 'carteira_page.dart';
-import 'favorita_page.dart';
-import 'moedas_page.dart';
+import 'package:cardy_pay/Page/carteira_page.dart';
+import 'package:cardy_pay/Page/favorita_page.dart';
+import 'package:cardy_pay/Page/moedas_page.dart';
+import 'package:cardy_pay/models/preferencia_tema.dart';
+import 'package:flutter/material.dart';
+// ignore: duplicate_import
+import '../components/bottom_nav_bar.dart';
+import '../configs/const_confing.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int paginaAtual = 0;
-  late PageController pc;
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+  // navigate bottom bar
+  // ignore: unused_field
+  int _selectedIndex = 0;
+  void navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    PreferenciaTema.setTema();
     super.initState();
-    pc = PageController(initialPage: paginaAtual);
-  }
-
-  setPaginaAtual(pagina) {
-    super.setState(() {
-        paginaAtual = pagina;
-      }
-    );
   }
 
   @override
+  void dispose() {
+   WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+   PreferenciaTema.setTema();
+  }
+
+
+  // pages
+  // ignore: unused_field
+  final List <Widget> _pages = [
+    // Tela principal
+    const MoedasPage(),
+
+    // Moedas Favoritas
+    const FavoritaPage(),
+
+    // carteira da pessoal
+    const CarteiraPage(),
+
+    
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: pc,
-        onPageChanged: setPaginaAtual,
-        children: const [
-          MoedasPage(),
-          FavoritaPage(),
-          CarteiraPage(),
-        ],
-      ),
-      
-      bottomNavigationBar: BottomNavigationBar(
-
-        currentIndex: paginaAtual,
-        type: BottomNavigationBarType.shifting,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_max_outlined),
-            label: "Home"
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.align_horizontal_center_outlined),
-            label: "Favorites"
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.contact_page_outlined),
-            label: "Portfolio"
-          )
-        ],
-        onTap: (pagina) {
-          pc.animateToPage(
-            pagina, 
-            duration: const Duration(milliseconds: 500), 
-            curve: Curves.ease);
-        },
-        backgroundColor: Colors.red,
-      ),
-    );
+      return 
+         ValueListenableBuilder(
+          valueListenable: PreferenciaTema.tema,
+          builder: (BuildContext context, Brightness tema, _) => Scaffold(
+              
+              backgroundColor: backgroundColor,
+              bottomNavigationBar: MyBottomNavBar(
+                onTabChange: (index) => navigateBottomBar(index),
+              ),
+              body: _pages[_selectedIndex],
+            ),
+         );
   }
 }
