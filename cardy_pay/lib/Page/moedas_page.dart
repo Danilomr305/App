@@ -147,7 +147,7 @@ class _MoedasPageState extends State<MoedasPage> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  "Positions",
+                                                  "Cash",
                                                   style: TextStyle(
                                                     fontSize: 15,
                                                     color: Colors.black54,
@@ -155,7 +155,7 @@ class _MoedasPageState extends State<MoedasPage> {
                                                 ),
                                                 
                                                 Text(
-                                                  "\$13553.00",
+                                                  "\$2250.00",
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20
