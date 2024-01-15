@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import '../components/bottom_nav_bar.dart';
@@ -19,13 +20,13 @@ class MyBottomNavBar extends StatelessWidget {
           ),
           child: GNav(
             padding:const EdgeInsets.all(15),
-            onTabChange: (value) => onTabChange!(value),
+onTabChange: (value) => onTabChange!(value),
             color: Colors.black,
-            mainAxisAlignment: MainAxisAlignment.center,
-            activeColor: Colors.white,
+                mainAxisAlignment: MainAxisAlignment.center,
+                activeColor: Colors.white,
             tabBackgroundColor: Colors.black,
-            tabBorderRadius: 24,
-            tabActiveBorder: Border.all(color: Colors.white),
+                tabBorderRadius: 24,
+                tabActiveBorder: Border.all(color: Colors.white),
             tabs: const [
               GButton(
                 icon: Icons.home_outlined,
@@ -63,4 +64,3 @@ class MyBottomNavBar extends StatelessWidget {
     );
   }
 }
-

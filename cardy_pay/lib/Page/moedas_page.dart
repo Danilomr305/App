@@ -209,7 +209,7 @@ class _MoedasPageState extends State<MoedasPage> {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
-                        backgroundColor: Colors.black,1
+                        backgroundColor: Colors.black,
                       ),
                     )
                   ],
