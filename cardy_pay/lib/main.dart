@@ -1,23 +1,21 @@
+// ignore_for_file: unused_import
+
+import 'package:cardy_pay/Page/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'Page/home_page.dart';
-
-void main() {
-  runApp(const MyApp());
+void main () {
+  runApp(const MeuApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MeuApp extends StatelessWidget {
+  const MeuApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Cardy_Pay',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-      ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
