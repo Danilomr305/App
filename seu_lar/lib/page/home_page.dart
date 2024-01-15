@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:line_icons/line_icon.dart';
 
-import '../widgets/grid_widgets.dart';
 import 'categories_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -265,13 +264,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-
-          const SizedBox(
-            height: 10,
-          ),
-
-          GridWidets()
+          ), 
         ],
       ),
     );

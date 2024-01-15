@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
       ),
       
       bottomNavigationBar: BottomNavigationBar(
+
         currentIndex: paginaAtual,
         type: BottomNavigationBarType.shifting,
         items: const [
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
             duration: const Duration(milliseconds: 500), 
             curve: Curves.ease);
         },
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
       ),
     );
   }
