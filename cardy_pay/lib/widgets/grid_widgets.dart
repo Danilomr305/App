@@ -1,4 +1,4 @@
-/*import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class GridWidets extends StatefulWidget {
   const GridWidets({super.key});
@@ -10,8 +10,7 @@ class GridWidets extends StatefulWidget {
 class _GridWidetsState extends State<GridWidets> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      SingleChildScrollView(
+    return SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(
@@ -20,10 +19,10 @@ class _GridWidetsState extends State<GridWidets> {
                       Container(
                         margin: const EdgeInsets.only(right: 10),
                         padding: const EdgeInsets.only(left: 10),
-                        width: MediaQuery.of(context).size.width / 2.4,
-                        height: MediaQuery.of(context).size.height / 8.8,
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        height: MediaQuery.of(context).size.height / 2.5,
                         decoration: BoxDecoration(
-                          color: Colors.black45,
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(10)
                         ),
                         child: const Row(
@@ -38,86 +37,147 @@ class _GridWidetsState extends State<GridWidets> {
                                     "Positions",
                                     style: TextStyle(
                                       fontSize: 15,
-                                      color: Colors.black54,
+                                      color: Colors.white,
                                     ),
                                    ),
                                   
-                                  Text(
-                                    "\$13553.00",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20
-                                    ),
+                                  Icon(
+                                    Icons.access_time_filled_outlined,
+                                    color: Colors.white,
                                   )
                                 ],
                               ),
                             ), 
-            
-                            Icon(
-                              Icons.arrow_forward_ios_outlined
-                            ),
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                ),
+                      ),
                     
                 const SizedBox(
-                  width: 1,
+                  width: 12,
                 ),
-                    
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      for (int i = 0; i<1; i++)
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        padding: const EdgeInsets.only(left: 10),
-                        width: MediaQuery.of(context).size.width / 2.4,
-                        height: MediaQuery.of(context).size.height / 8.8,
-                        decoration: BoxDecoration(
-                          color: Colors.black45,
-                          borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Positions",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black54,
-                                    ),
-                                   ),
-                                  
-                                  Text(
-                                    "\$2250.00",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ), 
-                  
-                            Icon(
-                              Icons.arrow_forward_ios_outlined
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+
+                Column(
+                  children: [
+                    SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              for (int i = 0; i<1; i++)
+                              Container(
+                                margin: const EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.only(left: 10),
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                height: MediaQuery.of(context).size.height / 5.3,
+                                decoration: BoxDecoration(
+                                  color: Colors.redAccent,
+                                  borderRadius: BorderRadius.circular(10)
+                                ),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+
+                                          Icon(
+                                            Icons.inbox_outlined,
+                                            color: Colors.white,
+
+                                          ),
+                                           
+                                          Text(
+                                            "Bonus received",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white,
+                                            ),
+                                           ),
+                                          
+                                          Text(
+                                            "\$122.00",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: 20
+                                            ),
+                                          )
+                                          
+                                        ],
+                                      ),
+                                    ), 
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                    ),
+
+                    const SizedBox(
+                      height: 18,
+                    ),
+
+                    SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              for (int i = 0; i<1; i++)
+                              Container(
+                                margin: const EdgeInsets.only(right: 10),
+                                padding: const EdgeInsets.only(left: 10),
+                                width: MediaQuery.of(context).size.width / 2.5,
+                                height: MediaQuery.of(context).size.height / 5.3,
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(10)
+                                ),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+              
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+
+                                          Icon(
+                                            Icons.inbox_outlined,
+                                            color: Colors.white,
+
+                                          ),
+                                           
+                                          Text(
+                                            "Bonus received",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.white,
+                                            ),
+                                           ),
+                                          
+                                          Text(
+                                            "\$122.00",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontSize: 20
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ), 
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                    ),
+                  ],
                 ),
+
+              ]                 
+            ),
     );
-  }
-  for (int i = 0; i<1; i++) 
-}*/
+  } 
+}

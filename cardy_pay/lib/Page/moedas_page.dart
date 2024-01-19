@@ -64,7 +64,7 @@ class _MoedasPageState extends State<MoedasPage> {
             ),
 
           const SizedBox(
-            height: 10,
+            height: 30,
           ),
 
           Column(
@@ -181,7 +181,7 @@ class _MoedasPageState extends State<MoedasPage> {
           ,
 
           const SizedBox(
-            height: 15,
+            height: 30,
           ),
 
           const Column(
@@ -216,7 +216,13 @@ class _MoedasPageState extends State<MoedasPage> {
                 ),
               ),
             ],
-          )
+          ),
+
+          const SizedBox(
+            height: 23,
+          ),
+
+          const GridWidets(),
         ]
       ),
     );
