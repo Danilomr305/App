@@ -223,6 +223,16 @@ class _MoedasPageState extends State<MoedasPage> {
           ),
 
           const GridWidets(),
+
+          const SizedBox(
+            height: 20,
+          ),
+
+          ListView.separated(
+            itemBuilder: itemBuilder, 
+            separatorBuilder: separatorBuilder, 
+            itemCount: itemCount
+          ),
         ]
       ),
     );

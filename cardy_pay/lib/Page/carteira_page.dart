@@ -8,6 +8,11 @@ class CarteiraPage extends StatefulWidget {
 }
 
 class _CarteiraPageState extends State<CarteiraPage> {
+  int index = 0;
+  double totalCarteira = 0;
+  double saldo = 0;
+  late NumberFormant real;
+  late ContaREspository;
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
