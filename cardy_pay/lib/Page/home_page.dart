@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     const FavoritaPage(),
 
     // carteira da pessoal
-     const CarteiraPage()
+    // const CarteiraPage()
 
     
   ];
