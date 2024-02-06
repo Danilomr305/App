@@ -1,7 +1,6 @@
-// ignore_for_file: unused_import
-
 import 'package:cardy_pay/Page/home_page.dart';
 import 'package:flutter/material.dart';
+
 
 void main () {
   runApp(const MeuApp());

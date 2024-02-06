@@ -1,10 +1,6 @@
-// ignore_for_file: unused_import
-
 import 'package:cardy_pay/Page/favorita_page.dart';
 import 'package:cardy_pay/Page/moedas_page.dart';
 import 'package:flutter/material.dart';
-
-import '../Page/carteira_page.dart';
 import '../components/bottom_nav_bar.dart';
 import '../configs/const_confing.dart';
 import '../models/preferencia_tema.dart';
