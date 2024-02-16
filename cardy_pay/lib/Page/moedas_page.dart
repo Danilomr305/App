@@ -19,7 +19,7 @@ class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
 
-   //final tabela = MoedaRepository.tabela;
+   final tabela = MoedaRepository.tabela;
 
     return SingleChildScrollView(
         child: Column(children: [
@@ -232,17 +232,24 @@ class _MoedasPageState extends State<MoedasPage> {
           const SizedBox(
             height: 20,
           ),
-          /*ListView.separated(
-            itemBuilder: (BuildContext context, int moeda) {
-              return ListTile(
-                leading: Image.asset(tabela[moeda].nome),
-                title: Text(tabela[moeda].nome),
-                trailing: Text(tabela[moeda].preco.toString()),
-              );
-            }, 
-            separatorBuilder: (_, __) => const Divider(), 
-            itemCount: tabela.length
-          ),*/
+          Expanded(
+            flex: 10,
+            child: SizedBox(
+              width: double.infinity,
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int moeda) {
+                  return ListTile(
+                    leading: Image.asset(tabela[moeda].nome),
+                    title: Text(tabela[moeda].nome),
+                    trailing: Text(tabela[moeda].preco.toString()),
+                  );
+                }, 
+                separatorBuilder: (_, __) => const Divider(), 
+                itemCount: tabela.length
+              ),
+            ),
+          ),
         ]
       ),
     );
