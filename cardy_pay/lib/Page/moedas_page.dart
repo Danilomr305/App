@@ -232,9 +232,6 @@ class _MoedasPageState extends State<MoedasPage> {
           const SizedBox(
             height: 20,
           ),
-
-          const ListMoedas()
-
           /*ListView.separated(
             itemBuilder: (BuildContext context, int moeda) {
               return ListTile(
