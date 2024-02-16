@@ -16,7 +16,7 @@ class _ListMoedasState extends State<ListMoedas> {
 
     return Scaffold(
       body: Expanded(
-        flex: 10,
+        flex: 2,
         child: SizedBox(
           child: ListView.separated(
                 itemBuilder: (BuildContext context, int moeda) {
