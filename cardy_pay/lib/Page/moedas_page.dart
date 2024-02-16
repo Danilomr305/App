@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, unused_local_variable
 
 import 'package:cardy_pay/list/moedas_list.dart';
 import 'package:cardy_pay/repositories/moeda_repository.dart';
@@ -232,26 +232,10 @@ class _MoedasPageState extends State<MoedasPage> {
           const SizedBox(
             height: 20,
           ),
-          Expanded(
-            flex: 10,
-            child: SizedBox(
-              width: double.infinity,
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int moeda) {
-                  return ListTile(
-                    leading: Image.asset(tabela[moeda].nome),
-                    title: Text(tabela[moeda].nome),
-                    trailing: Text(tabela[moeda].preco.toString()),
-                  );
-                }, 
-                separatorBuilder: (_, __) => const Divider(), 
-                itemCount: tabela.length
-              ),
-            ),
-          ),
-        ]
-      ),
+
+          const ListMoedas()
+          ] 
+        )
     );
   }
 }
