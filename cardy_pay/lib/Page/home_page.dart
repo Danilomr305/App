@@ -17,10 +17,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   // ignore: unused_field
   int _selectedIndex = 0;
   void navigateBottomBar(int index) {
+  if (index >= 0 && index < _pages.length) {
     setState(() {
       _selectedIndex = index;
     });
   }
+}
 
   @override
   void initState() {

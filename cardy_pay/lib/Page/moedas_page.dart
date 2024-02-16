@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:cardy_pay/list/moedas_list.dart';
 import 'package:cardy_pay/repositories/moeda_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
 
-   final tabela = MoedaRepository.tabela;
+   //final tabela = MoedaRepository.tabela;
 
     return SingleChildScrollView(
         child: Column(children: [
@@ -232,7 +233,9 @@ class _MoedasPageState extends State<MoedasPage> {
             height: 20,
           ),
 
-          ListView.separated(
+          const ListMoedas()
+
+          /*ListView.separated(
             itemBuilder: (BuildContext context, int moeda) {
               return ListTile(
                 leading: Image.asset(tabela[moeda].nome),
@@ -242,7 +245,7 @@ class _MoedasPageState extends State<MoedasPage> {
             }, 
             separatorBuilder: (_, __) => const Divider(), 
             itemCount: tabela.length
-          ),
+          ),*/
         ]
       ),
     );
