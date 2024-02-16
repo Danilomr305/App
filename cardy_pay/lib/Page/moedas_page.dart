@@ -224,7 +224,7 @@ class _MoedasPageState extends State<MoedasPage> {
           ),
 
           const SizedBox(
-            height: 23,
+            height: 10,
           ),
 
           const GridWidets(),
@@ -234,20 +234,23 @@ class _MoedasPageState extends State<MoedasPage> {
           ),
 
           Expanded(
-                flex: 10,
-                child:  ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int moeda) {
-                  return ListTile(
-                    leading: Image.asset(tabela[moeda].nome),
-                    title: Text(tabela[moeda].nome),
-                    trailing: Text(tabela[moeda].preco.toString()),
-                  );
-                }, 
-                separatorBuilder: (__, _) => const Divider(), 
-                itemCount: 6,
-              ),
+            flex: 2,
+            child: SizedBox(
+              width: double.infinity,
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int moeda) {
+                return ListTile(
+                  leading: Image.asset(tabela[moeda].nome),
+                  title: Text(tabela[moeda].nome),
+                  trailing: Text(tabela[moeda].preco.toString()),
+                );
+              }, 
+              separatorBuilder: (_,__) => const Divider(), 
+              itemCount: tabela.length,
+                            ),
             ),
+          ),
           ] 
         )
     );
