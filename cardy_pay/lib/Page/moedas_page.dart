@@ -247,7 +247,7 @@ class _MoedasPageState extends State<MoedasPage> {
                 );
               }, 
               separatorBuilder: (_,__) => const Divider(), 
-              itemCount: tabela.length,
+              itemCount: 3,
                             ),
             ),
           ),
