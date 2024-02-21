@@ -15,22 +15,18 @@ class _ListMoedasState extends State<ListMoedas> {
     final tabela = MoedaRepository.tabela;
 
     return Scaffold(
-      body: Expanded(
-        flex: 2,
-        child: SizedBox(
-          child: ListView.separated(
-                itemBuilder: (BuildContext context, int moeda) {
-                  return ListTile(
-                    leading: Image.asset(tabela[moeda].nome),
-                    title: Text(tabela[moeda].nome),
-                    trailing: Text(tabela[moeda].preco.toString()),
-                  );
-                }, 
-                separatorBuilder: (_, __) => const Divider(), 
-                itemCount: tabela.length,
+      body:ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int moeda) {
+              return ListTile(
+              leading: Image.asset(tabela[moeda].nome),
+              title: Text(tabela[moeda].nome),
+              trailing: Text(tabela[moeda].preco.toString()),
+            );
+          }, 
+            separatorBuilder: (__, _) => const Divider(), 
+            itemCount: 25,
           ),
-        ),
-      ),
     );
   }
 }

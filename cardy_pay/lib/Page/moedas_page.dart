@@ -233,24 +233,23 @@ class _MoedasPageState extends State<MoedasPage> {
             height: 20,
           ),
 
-          Expanded(
+          /*Expanded(
             flex: 2,
-            child: SizedBox(
-              width: double.infinity,
-              child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int moeda) {
-                return ListTile(
-                  leading: Image.asset(tabela[moeda].nome),
-                  title: Text(tabela[moeda].nome),
-                  trailing: Text(tabela[moeda].preco.toString()),
-                );
-              }, 
-              separatorBuilder: (_,__) => const Divider(), 
-              itemCount: 3,
-                            ),
-            ),
-          ),
+            child: ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int moeda) {
+              return ListTile(
+                leading: Image.asset(tabela[moeda].nome),
+                title: Text(tabela[moeda].nome),
+                trailing: Text(tabela[moeda].preco.toString()),
+              );
+            }, 
+            separatorBuilder: (_,__) => const Divider(), 
+            itemCount: 15,
+                          ),
+          ),*/
+
+          const ListMoedas()
           ] 
         )
     );
