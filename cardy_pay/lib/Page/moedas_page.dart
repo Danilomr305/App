@@ -214,7 +214,7 @@ class _MoedasPageState extends State<MoedasPage> {
               height: 20,
             ),
 
-            Expanded(
+            /*Expanded(
               flex: 2,
               child: SizedBox(
                 height: 600,
@@ -231,7 +231,7 @@ class _MoedasPageState extends State<MoedasPage> {
                   itemCount: 10,
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),
