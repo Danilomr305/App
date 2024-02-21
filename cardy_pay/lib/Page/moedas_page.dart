@@ -21,32 +21,37 @@ class _MoedasPageState extends State<MoedasPage> {
 
    final tabela = MoedaRepository.tabela;
 
-    return SingleChildScrollView(
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 40, left: 8, right: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  color: Colors.white54,
-                  child: const Text(
-                    'Welcome, Dnl!',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+    return Scaffold(
+  body: SingleChildScrollView(
+    child: SizedBox(
+      width: double.infinity,
+      child: Card(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 40, left: 8, right: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    color: Colors.white54,
+                    child: const Text(
+                      'Welcome, Dnl!',
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                const Icon(
-                  CupertinoIcons.bell,
-                  size: 37,
-                )
-              ],
+                  const Icon(
+                    CupertinoIcons.bell,
+                    size: 37,
+                  )
+                ],
+              ),
             ),
-          ),
-
-          const SizedBox(
-            height: 10,
-          ),
+            
+            const SizedBox(
+              height: 10,
+            ),
 
             const Padding(
               padding: EdgeInsets.only(left: 20),
@@ -68,190 +73,165 @@ class _MoedasPageState extends State<MoedasPage> {
               ),
             ),
 
-          const SizedBox(
-            height: 30,
-          ),
+            const SizedBox(
+              height: 30,
+            ),
 
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                          for (int i = 0; i<1; i++)
-                          Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            padding: const EdgeInsets.only(left: 10),
-                            width: MediaQuery.of(context).size.width / 2.4,
-                            height: MediaQuery.of(context).size.height / 8.8,
-                            decoration: BoxDecoration(
-                              color: Colors.black45,
-                                borderRadius: BorderRadius.circular(10)
-                            ),
-                                      child: const Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Positions",
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Colors.black54,
-                                                  ),
-                                                ),
-                                                
-                                                Text(
-                                                  "\$13553.00",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                ), 
-                          
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                          for (int i = 0; i<1; i++)
-                          Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            padding: const EdgeInsets.only(left: 10),
-                            width: MediaQuery.of(context).size.width / 2.4,
-                            height: MediaQuery.of(context).size.height / 8.8,
-                            decoration: BoxDecoration(
-                              color: Colors.black45,
-                                borderRadius: BorderRadius.circular(10)
-                            ),
-                                      child: const Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Cash",
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Colors.black54,
-                                                  ),
-                                                ),
-                                                
-                                                Text(
-                                                  "\$2250.00",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                ), 
-                          
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                ],
-              )
-            ]
-          )
-          ,
-
-          const SizedBox(
-            height: 30,
-          ),
-
-          const Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      'Token Bonus',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (int i = 0; i < 1; i++)
+                            Container(
+                              margin: const EdgeInsets.only(right: 10),
+                              padding: const EdgeInsets.only(left: 10),
+                              width: MediaQuery.of(context).size.width / 2.4,
+                              height: MediaQuery.of(context).size.height / 8.8,
+                              decoration: BoxDecoration(
+                                  color: Colors.black45, borderRadius: BorderRadius.circular(10)),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Positions",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                        Text(
+                                          "\$13553.00",
+                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(Icons.arrow_forward_ios_outlined),
+                                ],
+                              ),
+                            )
+                        ],
                       ),
                     ),
-              
-                    SizedBox(
-                      width: 10,
-                    ),
-              
-                    Text(
-                      'Today',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        backgroundColor: Colors.black,
+
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (int i = 0; i < 1; i++)
+                            Container(
+                              margin: const EdgeInsets.only(right: 10),
+                              padding: const EdgeInsets.only(left: 10),
+                              width: MediaQuery.of(context).size.width / 2.4,
+                              height: MediaQuery.of(context).size.height / 8.8,
+                              decoration: BoxDecoration(
+                                  color: Colors.black45, borderRadius: BorderRadius.circular(10)),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Cash",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                        Text(
+                                          "\$2250.00",
+                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(Icons.arrow_forward_ios_outlined),
+                                ],
+                              ),
+                            )
+                        ],
                       ),
-                    )
+                    ),
                   ],
+                )
+              ],
+            ),
+
+            const SizedBox(
+              height: 30,
+            ),
+
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Token Bonus',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Today',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          backgroundColor: Colors.black,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
 
-          const SizedBox(
-            height: 10,
-          ),
+            const SizedBox(
+              height: 10,
+            ),
 
-          const GridWidets(),
+            const GridWidets(),
 
-          const SizedBox(
-            height: 20,
-          ),
+            const SizedBox(
+              height: 20,
+            ),
 
-          /*Expanded(
-            flex: 2,
-            child: ListView.separated(
+            ListView.separated(
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int moeda) {
-              return ListTile(
-                leading: Image.asset(tabela[moeda].nome),
-                title: Text(tabela[moeda].nome),
-                trailing: Text(tabela[moeda].preco.toString()),
-              );
-            }, 
-            separatorBuilder: (_,__) => const Divider(), 
-            itemCount: 15,
-                          ),
-          ),*/
+                return ListTile(
+                  leading: Image.asset(tabela[moeda].nome),
+                  title: Text(tabela[moeda].nome),
+                  trailing: Text(tabela[moeda].preco.toString()),
+                );
+              },
+              separatorBuilder: (_, __) => const Divider(),
+              itemCount: 15,
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+);
 
-          const ListMoedas()
-          ] 
-        )
-    );
   }
 }
