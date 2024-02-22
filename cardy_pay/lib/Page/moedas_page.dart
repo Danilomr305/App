@@ -1,9 +1,7 @@
-// ignore_for_file: unused_import, unused_local_variable
 
-import 'package:cardy_pay/list/moedas_list.dart';
-import 'package:cardy_pay/repositories/moeda_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:line_icons/line_icon.dart';
 
 import '../widgets/grid_widgets.dart';
@@ -18,9 +16,6 @@ class MoedasPage extends StatefulWidget {
 class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
-
-   final tabela = MoedaRepository.tabela;
-
     return Scaffold(
   body: SingleChildScrollView(
     child: SizedBox(
@@ -211,27 +206,8 @@ class _MoedasPageState extends State<MoedasPage> {
             const GridWidets(),
 
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-
-            /*Expanded(
-              flex: 2,
-              child: SizedBox(
-                height: 600,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int moeda) {
-                    return ListTile(
-                      leading: Image.asset(tabela[moeda].nome),
-                      title: Text(tabela[moeda].nome),
-                      trailing: Text(tabela[moeda].preco.toString()),
-                    );
-                  },
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: 10,
-                ),
-              ),
-            ),*/
           ],
         ),
       ),

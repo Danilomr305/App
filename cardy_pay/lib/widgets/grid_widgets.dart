@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 class GridWidets extends StatefulWidget {
@@ -173,9 +175,16 @@ class _GridWidetsState extends State<GridWidets> {
                             ],
                           ),
                     ),
+
+                    const SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
 
+                const SizedBox(
+                  height: 10,
+                ),
               ]                 
             ),
     );
