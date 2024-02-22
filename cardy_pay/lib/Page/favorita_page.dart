@@ -10,11 +10,24 @@ class FavoritaPage extends StatefulWidget {
 class _FavoritaPageState extends State<FavoritaPage> {
   @override
   Widget build(BuildContext context) {
+
+    final names = ['danilo', 'ravena', 'victor', 'rafael'];
+
     return Scaffold(
       body: SafeArea( 
-        child: Container(
-          padding:const EdgeInsets.all(10),
-          color: Colors.white54,
+        child: SingleChildScrollView(
+          child: SizedBox(
+              width: double.infinity,
+              child: ListView.builder(
+                itemCount: names.length,
+                itemBuilder: (context, index) {
+                  final name = names[index];
+                  return ListTile(
+                    title: Text(name),
+                  );
+                }
+              ),
+            ),
         )
       ),
     );
