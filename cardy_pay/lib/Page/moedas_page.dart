@@ -21,6 +21,7 @@ class _MoedasPageState extends State<MoedasPage> {
   body: SingleChildScrollView(
     child: SizedBox(
       width: double.infinity,
+      height: double.infinity,
       child: Card(
         child: Column(
           children: [
