@@ -16,6 +16,7 @@ class MoedasPage extends StatefulWidget {
 class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
+    final names = ['danilo', 'ravena', 'victor', 'rafael'];
     return Scaffold(
   body: SingleChildScrollView(
     child: SizedBox(
@@ -208,6 +209,21 @@ class _MoedasPageState extends State<MoedasPage> {
             const SizedBox(
               height: 10,
             ),
+
+             SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: ListView.builder(
+                itemCount: names.length,
+                itemBuilder: (context, index) {
+                  final name = names[index];
+                  return ListTile(
+                    title: Text(name),
+                  );
+                }
+              ),
+            )
+            
           ],
         ),
       ),
