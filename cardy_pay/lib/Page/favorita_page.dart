@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../repository/moedas_repository.dart';
+
 class FavoritaPage extends StatefulWidget {
   const FavoritaPage({super.key});
 
@@ -12,21 +14,28 @@ class _FavoritaPageState extends State<FavoritaPage> {
   Widget build(BuildContext context) {
 
     
-  final names = ['danilo', 'ravena', 'victor', 'rafael'];
+  final tabela  = MoedaRepository.tabela;
+
   return Scaffold(
-      body: SizedBox(
-        height: double.infinity,
-          width: double.infinity,
-          child: ListView.builder(
-            itemCount: names.length,
-            itemBuilder: (context, index) {
-              final name = names[index];
-              return ListTile(
-                title: Text(name),
-              );
-            }
+      appBar: AppBar(
+        title: const Text(
+          'Cripto Moedas',
+          style: TextStyle(
+            fontWeight: FontWeight.bold
           ),
         ),
+      ),
+      body: ListView.separated(
+        itemBuilder: (BuildContext context, int moeda){
+          return ListTile(
+            leading: Image.asset(tabela[moeda].icone),
+            title: Text(tabela[moeda].nome),
+            trailing: Text(tabela[moeda].preco.toString()),
+          );
+        }, 
+        padding: const EdgeInsets.all(16),
+        separatorBuilder: (_, __) => const Divider(), 
+        itemCount: tabela.length),
     );
   }
 }
