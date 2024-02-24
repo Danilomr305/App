@@ -1,5 +1,8 @@
-import 'package:cardy_pay/Page/favorita_page.dart';
+// ignore_for_file: unused_import
+
 import 'package:cardy_pay/Page/moedas_page.dart';
+import 'package:cardy_pay/Page/home_principal_page.dart';
+import 'package:cardy_pay/models/moeda_models.dart';
 import 'package:flutter/material.dart';
 import '../components/bottom_nav_bar.dart';
 import '../configs/const_confing.dart';
@@ -47,10 +50,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   // ignore: unused_field
   final List <Widget> _pages = [
     // Tela principal
-    const MoedasPage(),
+    const HomePrincipal(),
 
     // Moedas Favoritas
-    const FavoritaPage(),
+    //const MoedasPage(),
 
     // carteira da pessoal
     // const CarteiraPage()
