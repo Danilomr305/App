@@ -39,23 +39,6 @@ onTabChange: (value) => onTabChange!(value),
             ],
           ),
         ),
-
-        GNav(
-          padding: const EdgeInsets.all(15),
-          onTabChange: (value) => onTabChange!(value),
-          color: Colors.black,
-          mainAxisAlignment: MainAxisAlignment.center,
-          activeColor: Colors.white,
-          tabBackgroundColor: Colors.black,
-          tabBorderRadius: 50,
-          tabActiveBorder: Border.all(color: Colors.white),
-          tabs: const [
-            GButton(
-              icon:  Icons.add_outlined
-
-            )
-          ]
-        )
       ],
     );
   }

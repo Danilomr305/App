@@ -52,8 +52,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     // Tela principal
     const HomePrincipal(),
 
-    // Moedas Favoritas
-    //const MoedasPage(),
+    // Moedas 
+    const MoedasPage(),
 
     // carteira da pessoal
     // const CarteiraPage()
@@ -77,3 +77,4 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
          );
   }
 }
+

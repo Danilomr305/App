@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../repository/moedas_repository.dart';
 
-class FavoritaPage extends StatefulWidget {
-  const FavoritaPage({super.key});
+class MoedasPage extends StatefulWidget {
+  const MoedasPage({super.key});
 
   @override
-  State<FavoritaPage> createState() => _FavoritaPageState();
+  State<MoedasPage> createState() => _MoedasPageState();
 }
 
-class _FavoritaPageState extends State<FavoritaPage> {
+class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
 
