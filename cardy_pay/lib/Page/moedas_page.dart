@@ -23,18 +23,45 @@ class _MoedasPageState extends State<MoedasPage> {
   
   final tabela  = MoedaRepository.tabela;
 
+  appBarDinamica() {
+    if (selecionadas.isEmpty) {
+      return AppBar(
+        backgroundColor: Colors.black87,
+        title: const Text(
+          'Cripto Moedas',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white
+          ),
+        ),
+      );
+    } else {
+      return AppBar(
+        leading: IconButton(
+          onPressed: () {
+            setState(() {
+              selecionadas = [];
+            });
+          }, 
+          icon: const Icon(Icons.arrow_back)
+        ),
+        title: Text('${selecionadas.length} selecionadas',
+        style: const TextStyle(
+          color: Colors.white
+        ),
+        ),
+        backgroundColor: Colors.indigo,
+        elevation: 1,
+        iconTheme: const IconThemeData(color: Colors.black87),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
 
   return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Cripto Moedas',
-          style: TextStyle(
-            fontWeight: FontWeight.bold
-          ),
-        ),
-      ),
+      appBar: appBarDinamica(),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int moeda){
           return ListTile(
@@ -76,6 +103,27 @@ class _MoedasPageState extends State<MoedasPage> {
         separatorBuilder: (_, __) => const Divider(), 
         itemCount: tabela.length,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: selecionadas.isNotEmpty
+        ? FloatingActionButton.extended(
+          onPressed: () {
+
+          },
+          icon:
+          const Icon(
+            Icons.star,
+            color: Colors.white
+          ),
+          label: const Text('FAVORITAR',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0,
+
+          ),),
+          backgroundColor: Colors.black,
+          )
+        : null,
     );
   }
 }
