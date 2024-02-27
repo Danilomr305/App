@@ -20,7 +20,7 @@ class MyBottomNavBar extends StatelessWidget {
           ),
           child: GNav(
             padding:const EdgeInsets.all(15),
-onTabChange: (value) => onTabChange!(value),
+            onTabChange: (value) => onTabChange!(value),
             color: Colors.black,
                 mainAxisAlignment: MainAxisAlignment.center,
                 activeColor: Colors.white,
@@ -33,7 +33,7 @@ onTabChange: (value) => onTabChange!(value),
                 text: 'Home',
               ),
               GButton(
-                icon: Icons.code,
+                icon: Icons.confirmation_num_outlined ,
                 text: 'Moedas',
               ),
             ],

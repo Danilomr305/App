@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, avoid_print
 
+import 'package:cardy_pay/Page/moedas_detalhes.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/moeda_models.dart';
@@ -57,6 +58,13 @@ class _MoedasPageState extends State<MoedasPage> {
     }
   }
 
+   mostrarDelalhes(Moeda moeda) {
+    Navigator.push(context, MaterialPageRoute(
+      builder: (_) => MoedasDetalhesPage(moeda: moeda),
+      )
+    );
+  } 
+
   @override
   Widget build(BuildContext context) {
 
@@ -97,13 +105,14 @@ class _MoedasPageState extends State<MoedasPage> {
                 : selecionadas.add(tabela[moeda]);
               });
             },
+            onTap: () => mostrarDelalhes(tabela[moeda])
           );
         }, 
         padding: const EdgeInsets.all(16),
         separatorBuilder: (_, __) => const Divider(), 
         itemCount: tabela.length,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: selecionadas.isNotEmpty
         ? FloatingActionButton.extended(
           onPressed: () {
