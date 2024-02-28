@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../models/moeda_models.dart';
+// ignore: unused_import
+import 'package:icofont_flutter/icofont_flutter.dart';
 
 // ignore: must_be_immutable
 class MoedasDetalhesPage extends StatefulWidget {
@@ -20,6 +22,26 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
 
   final _form = GlobalKey<FormState> ();
   final _valor = TextEditingController();
+
+  comprar() {
+    if(_form.currentState!.validate()) {
+
+      Navigator.pop(context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: 
+          Text('Comprar realizada com sucesso!',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+            color: Colors.white,
+          ),
+          )
+        )
+      );
+
+    }
+  }
 
   double quantidade = 0;
 
@@ -62,9 +84,18 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
             height: 15,
           ),
 
+          (quantidade > 0)
+
+          ?
+
           SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.teal.withOpacity(0.05)
+              ),
               margin: const EdgeInsets.only(
                 bottom: 10
               ),
@@ -75,7 +106,12 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
                   color: Colors.teal
                 ),
              ),
+             
             ),
+          )
+
+          : Container(
+            margin: const EdgeInsets.only(bottom: 24),
           ),
 
           SizedBox(
@@ -109,7 +145,40 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
                   }
                   return null;
                 },
-              )
+                onChanged: (value) {
+                  setState(() {
+                    quantidade = (value.isEmpty)
+                    ? 0
+                    : double.parse(value) / widget.moeda.preco;
+                  });
+                },
+              ),
+            ),     
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            margin: const EdgeInsets.only(top: 10),
+            child: ElevatedButton(
+              onPressed: () {
+                comprar();
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    Icon(
+                      Icons.cake_sharp
+                    ),
+                    Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      'Comprar',
+                      style: TextStyle(
+                        fontSize: 20
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

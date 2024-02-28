@@ -98,8 +98,10 @@ class _HomePrincipalState extends State<HomePrincipal> {
                             )
                           ],
                         ),
+                      ),                     
+                      Icon(
+                        Icons.arrow_forward_ios_outlined,                      
                       ),
-                      Icon(Icons.arrow_forward_ios_outlined),
                     ],
                   ),
                 )
