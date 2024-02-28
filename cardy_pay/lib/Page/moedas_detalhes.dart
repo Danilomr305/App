@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../models/moeda_models.dart';
 
@@ -17,6 +20,8 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
 
   final _form = GlobalKey<FormState> ();
   final _valor = TextEditingController();
+
+  double quantidade = 0;
 
   NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
 
@@ -58,6 +63,22 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
           ),
 
           SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              margin: const EdgeInsets.only(
+                bottom: 10
+              ),
+              child: Text('$quantidade ${widget.moeda.sigla}',
+              style: const 
+                TextStyle(
+                  fontSize: 20,
+                  color: Colors.teal
+                ),
+             ),
+            ),
+          ),
+
+          SizedBox(
             height: 55,
             width: 350,
             child: Form(
@@ -68,8 +89,26 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Valor',
-                    prefixIcon: Icon(Icons.monetization_on_outlined)
+                    prefixIcon: Icon(Icons.monetization_on_outlined),
+                    suffix: Text(
+                      'reais',
+                      style: TextStyle(
+                        fontSize: 14
+                      ),
+                    ),
                 ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                validator: (value) {
+                  if(value!.isEmpty){
+                    return "Informe o valor da compra";
+                  } else if (double.parse(value) < 50) {
+                    return "Comprar minina é R\$ 50,00";
+                  }
+                  return null;
+                },
               )
             ),
           )
