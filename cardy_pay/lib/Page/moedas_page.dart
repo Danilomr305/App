@@ -108,7 +108,7 @@ class _MoedasPageState extends State<MoedasPage> {
                   ),
                 ),
                 if(favoritas.lista.contains(tabela[moeda]))
-                const Icon(Icons.star, color: Colors.amber, size: 8,)
+                const Icon(Icons.star, color: Colors.amber, size: 18,)
               ],
             ),
             trailing: Text(

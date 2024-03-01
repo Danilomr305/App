@@ -16,9 +16,11 @@ class HomePrincipal extends StatefulWidget {
 class _HomePrincipalState extends State<HomePrincipal> {
 
   pagefavoritas() {
-    setState(() {
-      const FavoritasPage();
-    });
+    Navigator.push( context, 
+      MaterialPageRoute(
+        builder: (context) => const FavoritasPage() 
+      ),
+    );            
   }
 
   @override
@@ -198,9 +200,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            setState(() {
-              const FavoritasPage();
-            });
+            pagefavoritas();
+            
           },
           label: const Icon(Icons.star_border_outlined, color: Colors.white),
           backgroundColor: Colors.black,
