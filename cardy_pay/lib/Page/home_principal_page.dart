@@ -1,3 +1,4 @@
+import 'package:cardy_pay/Page/favoritas_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
@@ -13,6 +14,13 @@ class HomePrincipal extends StatefulWidget {
 }
 
 class _HomePrincipalState extends State<HomePrincipal> {
+
+  pagefavoritas() {
+    setState(() {
+      const FavoritasPage();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -190,10 +198,13 @@ class _HomePrincipalState extends State<HomePrincipal> {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            
+            setState(() {
+              const FavoritasPage();
+            });
           },
           label: const Icon(Icons.star_border_outlined, color: Colors.white),
           backgroundColor: Colors.black,
         ),
+        
     );
   }}

@@ -64,16 +64,16 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
       return 
-         ValueListenableBuilder(
-          valueListenable: PreferenciaTema.tema,
-          builder: (BuildContext context, Brightness tema, _) => Scaffold(
-              
-              backgroundColor: backgroundColor,
-              bottomNavigationBar: MyBottomNavBar(
-                onTabChange: (index) => navigateBottomBar(index),
+          ValueListenableBuilder(
+            valueListenable: PreferenciaTema.tema,
+            builder: (BuildContext context, Brightness tema, _) => Scaffold(
+                
+                backgroundColor: backgroundColor,
+                bottomNavigationBar: MyBottomNavBar(
+                  onTabChange: (index) => navigateBottomBar(index),
+                ),
+                body: _pages[_selectedIndex],
               ),
-              body: _pages[_selectedIndex],
-            ),
          );
   }
 }
