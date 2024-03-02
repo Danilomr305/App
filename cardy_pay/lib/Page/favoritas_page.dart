@@ -19,17 +19,24 @@ class _FavoritasPageState extends State<FavoritasPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text('Moedas Favoritas'),
-      ),
-      body: Container(
-        color: Colors.black54.withOpacity((0.05)),
-        height: MediaQuery.of(context).size.height,
-        padding: const EdgeInsets.all(12.0),
-        child: const ListTile(
-          leading: Icon(Icons.star),
-          title: Text('Ainda não há moedas favoritas'),
+        backgroundColor: Colors.black,
+        title:const Text('Moedas Favoritas',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold
+        ),
         ),
       ),
+      body: 
+          Container(
+            color: Colors.black54.withOpacity((0.05)),
+            height: MediaQuery.of(context).size.height,
+            padding: const EdgeInsets.all(12.0),
+            child: const ListTile(
+              leading: Icon(Icons.star),
+              title: Text('Ainda não há moedas favoritas'),
+            ),
+          ),
     );
   }
 }
