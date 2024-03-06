@@ -1,5 +1,4 @@
 // ignore_for_file: unused_import, duplicate_ignore
-
 import 'package:cardy_pay/repository/favoritas_repository.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
@@ -7,7 +6,6 @@ import 'package:intl/intl.dart';
 import '../models/moeda_models.dart';
 import 'package:provider/provider.dart';
 import '../widgets/moeda_card.dart';
-
 
 class FavoritasPage extends StatefulWidget {
   const FavoritasPage({super.key});
@@ -24,7 +22,7 @@ class _FavoritasPageState extends State<FavoritasPage> {
         backgroundColor: Colors.black,
         title:const Text('Moedas Favoritas',
         style: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: FontWeight.bold
         ),
         ),
@@ -44,7 +42,8 @@ class _FavoritasPageState extends State<FavoritasPage> {
                 : ListView.builder(
                   itemBuilder: (_, index) {
                     return MoedaCard(moeda: favoritas.lista[index]);
-                  }
+                  },
+                  itemCount: favoritas.lista.length,
                 );
                },
             )
