@@ -1,8 +1,11 @@
 
+// ignore_for_file: unused_import, duplicate_ignore
+
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import '../components/bottom_nav_bar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
 
 // ignore: must_be_immutable
 class MyBottomNavBar extends StatelessWidget {
@@ -33,8 +36,12 @@ class MyBottomNavBar extends StatelessWidget {
                 text: 'Home',
               ),
               GButton(
-                icon: Icons.confirmation_num_outlined ,
-                text: 'Moedas',
+                icon: IcoFontIcons.coins,
+                text: 'Coins',
+              ),
+              GButton(
+                icon: Icons.account_balance_wallet,
+                text: 'Portifolio',
               ),
             ],
           ),
