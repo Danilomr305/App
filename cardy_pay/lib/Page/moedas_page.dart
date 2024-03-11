@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, avoid_print
 
 import 'package:cardy_pay/Page/moedas_detalhes.dart';
+import 'package:cardy_pay/configs/app_settings.dart';
 import 'package:cardy_pay/repository/favoritas_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,14 +19,36 @@ class MoedasPage extends StatefulWidget {
 class _MoedasPageState extends State<MoedasPage> {
 
   late FavoritasRepository favoritas;
-  NumberFormat real = NumberFormat.currency(
-    locale: 'pt-br',
-    name: 'R\$'
-  );
-
+  late NumberFormat real;
+  late Map<String, String> loc;
   List<Moeda> selecionadas = [];
-  
   final tabela  = MoedaRepository.tabela;
+
+  readNumberFormat() {
+    loc = context.watch<AppSettings>().locale;
+    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+  }
+
+  changeLanguagemButton() {
+    final locale = loc['locale'] == 'pt_BR' ? 'en_US' : 'pt_BR';
+    final name = loc['locale'] == 'pt_BR' ? '\$' : 'R\$';
+
+    return PopupMenuButton(
+      icon: const Icon(Icons.language),
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          child: ListTile(
+            leading: const Icon(Icons.swap_vert_rounded),
+            title: Text('Usar $locale'),
+            onTap: () {
+              context.read<AppSettings>().setLocale(locale, name);
+              Navigator.pop(context);
+            },
+          )
+        )
+      ]
+    );
+  }
 
   appBarDinamica() {
     if (selecionadas.isEmpty) {
@@ -38,6 +61,9 @@ class _MoedasPageState extends State<MoedasPage> {
             color: Colors.white
           ),
         ),
+        actions: [
+          changeLanguagemButton()
+        ],
       );
     } else {
       return AppBar(
@@ -79,6 +105,7 @@ class _MoedasPageState extends State<MoedasPage> {
   Widget build(BuildContext context) {
 
     favoritas = Provider.of<FavoritasRepository>(context);
+    readNumberFormat();
 
   return Scaffold(
       appBar: appBarDinamica(),
