@@ -3,6 +3,7 @@
 import 'package:cardy_pay/Page/home_page.dart';
 import 'package:cardy_pay/configs/app_settings.dart';
 import 'package:cardy_pay/repository/favoritas_repository.dart';
+import 'package:cardy_pay/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class MeuApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Cardy_Pay',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
