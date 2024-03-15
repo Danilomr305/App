@@ -1,5 +1,5 @@
 // ignore_for_file: unused_import
-
+import 'package:hive/hive.dart';
 import 'package:cardy_pay/Page/home_page.dart';
 import 'package:cardy_pay/configs/app_settings.dart';
 import 'package:cardy_pay/repository/favoritas_repository.dart';
@@ -8,8 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
+import 'configs/hive_config.dart';
 
-void main () {
+
+Future<void> main () async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await  HiveConfig.start();
+  
   runApp(
     MultiProvider(
       providers: [

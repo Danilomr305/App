@@ -1,7 +1,8 @@
-// ignore_for_file: unused_import
+
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+// ignore: unused_import
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppSettings extends ChangeNotifier {
