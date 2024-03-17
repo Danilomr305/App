@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../components/bottom_nav_bar.dart';
 import '../configs/const_confing.dart';
 import '../models/preferencia_tema.dart';
+import 'configuracoes_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,7 +57,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     const MoedasPage(),
 
     // carteira da pessoal
-    // const CarteiraPage()
+    
+
+    // Conta Pessoal
+    const ConfiguracoesPage()
 
     
   ];

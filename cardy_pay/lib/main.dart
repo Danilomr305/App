@@ -1,4 +1,5 @@
 // ignore_for_file: unused_import
+import 'package:cardy_pay/repository/conta_repository.dart';
 import 'package:hive/hive.dart';
 import 'package:cardy_pay/Page/home_page.dart';
 import 'package:cardy_pay/configs/app_settings.dart';
@@ -19,6 +20,9 @@ Future<void> main () async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => ContaRepository(),
+        ),
         ChangeNotifierProvider(
           create: (context) => FavoritasRepository(),
         ),

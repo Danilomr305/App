@@ -1,3 +1,4 @@
+import 'package:cardy_pay/Page/configuracoes_page.dart';
 import 'package:cardy_pay/Page/favoritas_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,10 @@ class _HomePrincipalState extends State<HomePrincipal> {
     );            
   }
 
+  saldo() {
+    const ConfiguracoesPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -38,7 +43,6 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(10),
-                          color: Colors.white54,
                           child: const Text(
                             'Welcome, Dnl!',
                             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -51,6 +55,9 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       ],
                     ),
                   ),
+
+                  const Divider(),
+
                   const SizedBox(
                     height: 5,
                   ),
@@ -60,14 +67,14 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          "\$ 13,553.00",
+                          '123',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                         ),
                         SizedBox(
                           width: 8,
                         ),
                         Text(
-                          "Balance",
+                          "Saldo",
                           style: TextStyle(color: Colors.black26, fontSize: 15),
                         )
                       ],

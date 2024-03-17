@@ -33,15 +33,15 @@ class MyBottomNavBar extends StatelessWidget {
             tabs: const [
               GButton(
                 icon: Icons.home_outlined,
-                text: 'Home',
+                text: 'Inicio',
               ),
               GButton(
                 icon: IcoFontIcons.coins,
-                text: 'Coins',
+                text: 'Moedas',
               ),
               GButton(
-                icon: Icons.account_balance_wallet,
-                text: 'Portifolio',
+                icon: Icons.settings,
+                text: 'Conta',
               ),
             ],
           ),
