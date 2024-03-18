@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:line_icons/line_icon.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/grid_widgets.dart';
 
@@ -22,10 +23,6 @@ class _HomePrincipalState extends State<HomePrincipal> {
         builder: (context) => const FavoritasPage() 
       ),
     );            
-  }
-
-  saldo() {
-    const ConfiguracoesPage();
   }
 
   @override
@@ -67,7 +64,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          '123',
+                          '',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                         ),
                         SizedBox(

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -7,53 +8,45 @@ import '../configs/app_settings.dart';
 import '../repository/conta_repository.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
-
-  const ConfiguracoesPage({ super.key });
+  const ConfiguracoesPage({Key? key}) : super(key: key);
 
   @override
-  State<ConfiguracoesPage> createState() => _ConfiguracoesPageState();
+  // ignore: library_private_types_in_public_api
+  _ConfiguracoesPageState createState() => _ConfiguracoesPageState();
 }
 
 class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
-
-   @override
-   Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     final conta = context.watch<ContaRepository>();
-
     final loc = context.read<AppSettings>().locale;
+    NumberFormat real =
+        NumberFormat.currency(locale: loc['locale'], name: loc['name']);
 
-    NumberFormat real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
-
-       return Scaffold(
-          appBar: AppBar(
-            title: const Text('Conta'),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              children: [
-                ListTile(
-                  title: const Text(
-                    'Saldo',
-                  ),
-                  subtitle: Text(
-                    real.format(conta.saldo),
-                    style: const TextStyle(
-                      fontSize: 25,
-                      color:Colors.indigo
-                    ),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {
-                      //updateSaldo();
-                    }, 
-                    icon: const Icon(Icons.edit) 
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Configurações'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            ListTile(
+              title: const Text('Saldo'),
+              subtitle: Text(
+                real.format(conta.saldo),
+                style: const TextStyle(
+                  fontSize: 25,
+                  color: Colors.indigo,
                 ),
-                const Divider()
-              ],
-          ),
-        )
+              ),
+              trailing:
+                  IconButton(onPressed: updateSaldo, icon: const Icon(Icons.edit)),
+            ),
+            const Divider(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -65,9 +58,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
     valor.text = conta.saldo.toString();
 
     AlertDialog dialog = AlertDialog(
-      title: const Text(
-        'Atualizar o Saldo'
-      ),
+      title: const Text('Atualizar o Saldo'),
       content: Form(
         key: form,
         child: TextFormField(
@@ -80,21 +71,20 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
             if (value!.isEmpty) return 'Informe o valor do saldo';
             return null;
           },
-        )
+        ),
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('CANCELAR')
-        ),
-
+            onPressed: () => Navigator.pop(context), child: const Text('CANCELAR')),
         TextButton(
           onPressed: () {
-            if (form.currentState!.validate() ){
+            if (form.currentState!.validate()) {
               conta.setSaldo(double.parse(valor.text));
               Navigator.pop(context);
             }
-          }, child: const Text('Salvar'))
+          },
+          child:const  Text('SALVAR'),
+        ),
       ],
     );
 
