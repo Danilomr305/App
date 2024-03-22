@@ -1,8 +1,12 @@
 import 'package:cardy_pay/Page/favoritas_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 // ignore: unused_import
 import 'package:line_icons/line_icon.dart';
+import 'package:provider/provider.dart';
+import '../configs/app_settings.dart';
+import '../repository/conta_repository.dart';
 import '../widgets/grid_widgets.dart';
 
 class HomePrincipal extends StatefulWidget {
@@ -22,10 +26,21 @@ class _HomePrincipalState extends State<HomePrincipal> {
     );            
   }
 
+  int index = 0;
+  double totalCarteira = 0;
+  double saldo = 0;
+  late NumberFormat real;
+  late ContaRepository conta;
+
+
   
 
   @override
   Widget build(BuildContext context) {
+    conta = context.watch<ContaRepository>();
+    final loc = context.read<AppSettings>().locale;
+    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+    saldo = conta.saldo;
     
     return Scaffold(
       body: SingleChildScrollView(
@@ -57,19 +72,25 @@ class _HomePrincipalState extends State<HomePrincipal> {
                   const SizedBox(
                     height: 5,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          '',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                          real.format(totalCarteira),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 34,
+                          ),
+                      
                         ),
-                        SizedBox(
+
+                        const SizedBox(
                           width: 8,
                         ),
-                        Text(
+
+                        const Text(
                           "Saldo",
                           style: TextStyle(color: Colors.black26, fontSize: 15),
                         )
