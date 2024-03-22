@@ -63,7 +63,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'updateSaldo',
+                          '',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                         ),
                         SizedBox(
@@ -212,3 +212,5 @@ class _HomePrincipalState extends State<HomePrincipal> {
         
     );
   }}
+  
+  

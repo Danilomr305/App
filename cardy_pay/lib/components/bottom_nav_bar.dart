@@ -43,6 +43,10 @@ class MyBottomNavBar extends StatelessWidget {
                 icon: Icons.settings,
                 text: 'Conta',
               ),
+              GButton(
+                icon: Icons.add_location_outlined,
+                text: 'Carteira',
+              ),
             ],
           ),
         ),
