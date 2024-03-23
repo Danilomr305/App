@@ -41,6 +41,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
     final loc = context.read<AppSettings>().locale;
     real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
     saldo = conta.saldo;
+
+    setTotalCarteira();
     
     return Scaffold(
       body: SingleChildScrollView(
@@ -232,6 +234,20 @@ class _HomePrincipalState extends State<HomePrincipal> {
         ),
         
     );
-  }}
+  }
+  
+  setTotalCarteira() {
+    final carteiraList = conta.carteira;
+    setState(() {
+      
+    });((){
+      totalCarteira = conta.saldo;
+      for (var posicao in carteiraList) {
+        totalCarteira += posicao.moeda.preco = posicao.quantidade;
+      }
+    });
+  }
+  
+  }
   
   
