@@ -82,10 +82,15 @@ class _CarteiraPageState extends State<CarteiraPage> {
   }
 
   loadGrafico() {
-    return Container(
+    return (conta.saldo <= 0)
+    ? Container(
       width: MediaQuery.of(context).size.width ,
       height: 200,
-      child: const CircularProgressIndicator(),
-    );
+      child:const  Center(
+        child: CircularProgressIndicator()
+        ),
+    )
+    :
+    Stack();
   }
 }
