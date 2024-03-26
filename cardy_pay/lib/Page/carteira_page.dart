@@ -81,6 +81,53 @@ class _CarteiraPageState extends State<CarteiraPage> {
     });
   }
 
+  setGraficoDados(int index) {
+    if (index < 0) return;
+
+    if (index == carteira.length) {
+      graficoLabel = 'Saldo';
+      graficoValor = conta.saldo;
+    } else {
+      graficoLabel = carteira[index].moeda.nome;
+      graficoValor = carteira[index].moeda.preco * carteira[index].quantidade;
+    }
+  }
+
+  loadCarteira() {
+    setGraficoDados(index);
+    carteira = conta.carteira;
+    final tamanhoLista = carteira.length + 1;
+
+    return List.generate(tamanhoLista, (i){
+      final isTouched = i == index;
+      final isSaldo = i == tamanhoLista - 1;
+      final fontSize = isTouched ? 18.0 : 14.0;
+      final radius = isTouched ? 60.0 : 50.0;
+      final color = isTouched ? Colors.indigo.shade700 : Colors.indigo.shade400;
+
+      double porcentagem = 0;
+      if (!isSaldo) {
+        porcentagem = 
+        carteira[i].moeda.preco * carteira[i].quantidade / totalCarteira;
+      } else {
+        porcentagem = (conta.saldo > 0) ? conta.saldo / totalCarteira : 0;
+      }
+      porcentagem *= 100;
+
+      return PieChartSectionData(
+        color: color,
+        value: porcentagem,
+        title: '${porcentagem.toStringAsFixed(0)}%',
+        radius: radius,
+        titleStyle: TextStyle(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: Colors.white
+        )
+      );
+    });
+  }
+
   loadGrafico() {
     return (conta.saldo <= 0)
     ? Container(
@@ -91,6 +138,43 @@ class _CarteiraPageState extends State<CarteiraPage> {
         ),
     )
     :
-    Stack();
+    Stack(
+      alignment: Alignment.center,
+      children: [
+        AspectRatio(
+          aspectRatio: 1,
+          child: PieChart(
+            PieChartData(
+              sectionsSpace: 5,
+              centerSpaceRadius: 110,
+              sections: loadCarteira(),
+              pieTouchData: PieTouchData(
+                touchCallback: (touch) => setState(() {
+                  index = touch.touchedSection!.touchedSectionIndex;
+                  setGraficoDados(index);
+                }),
+              )
+            )
+          ),
+        ),
+        Column(
+          children: [
+            Text(graficoLabel,
+              style:const  TextStyle(
+                fontSize: 20,
+                color: Colors.teal
+              ),
+            ),
+            
+            Text(
+              real.format(graficoValor),
+              style:const TextStyle(
+                fontSize: 28
+              ),
+            )
+          ],
+        )
+      ],
+    );
   }
 }
