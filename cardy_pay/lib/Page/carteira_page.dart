@@ -74,11 +74,9 @@ class _CarteiraPageState extends State<CarteiraPage> {
   setTotalCarteira() {
     final carteiraList = conta.carteira;
     setState(() {
-      
-    });((){
       totalCarteira = conta.saldo;
       for (var posicao in carteiraList) {
-        totalCarteira += posicao.moeda.preco = posicao.quantidade;
+        totalCarteira += posicao.moeda.preco * posicao.quantidade;
       }
     });
   }
