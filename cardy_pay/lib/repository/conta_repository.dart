@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../database/db.dart';
+import '../models/moeda_models.dart';
 import '../models/posicao.dart';
 
 class ContaRepository extends ChangeNotifier {
@@ -37,5 +38,30 @@ class ContaRepository extends ChangeNotifier {
     });
     _saldo = valor;
     notifyListeners();
+  }
+
+  comprar(Moeda moeda, double valor) async {
+    db = await DB.instance.database;
+    await db.transaction((txn) async {
+      final posicaoMoeda = await txn.query(
+        'carteira',
+        where: 'sigla = ?',
+        whereArgs: [moeda.sigla]
+      );
+
+      if (posicaoMoeda.isEmpty) {
+        await txn.insert('carteira', {
+          'sigla': moeda.sigla,
+          'moeda': moeda.nome,
+          'quantidade': (valor / moeda.preco).toString()
+        });
+      }
+
+      else {
+        // ignore: unused_local_variable
+        final atual = double.parse(posicaoMoeda.first['quantidade'].toString());
+        await txn.update('carteira', {});
+      }
+    });
   }
 }

@@ -1,8 +1,11 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, use_build_context_synchronously
 
+import 'package:cardy_pay/configs/app_settings.dart';
+import 'package:cardy_pay/repository/conta_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../models/moeda_models.dart';
 // ignore: unused_import
 import 'package:icofont_flutter/icofont_flutter.dart';
@@ -19,13 +22,17 @@ class MoedasDetalhesPage extends StatefulWidget {
 }
 
 class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
-
   final _form = GlobalKey<FormState> ();
   final _valor = TextEditingController();
+  double quantidade = 0;
+  NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
+  late ContaRepository conta;
 
-  comprar() {
+  comprar() async {
     if(_form.currentState!.validate()) {
-
+      
+      await conta.comprar(widget.moeda, double.parse(_valor.text));
+      
       Navigator.pop(context);
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -43,12 +50,10 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
     }
   }
 
-  double quantidade = 0;
-
-  NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
-
   @override
   Widget build(BuildContext context) {
+    realNumberFormat();
+    conta = Provider.of<ContaRepository>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.moeda.nome),
@@ -142,6 +147,8 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
                     return "Informe o valor da compra";
                   } else if (double.parse(value) < 50) {
                     return "Comprar minina é R\$ 50,00";
+                  } else if (double.parse(value) <= conta.saldo ) {
+                    return "Você não tem saldo suficiente!";
                   }
                   return null;
                 },
@@ -184,5 +191,10 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
         ],
       ),
     );
+  }
+
+  realNumberFormat() {
+    final loc = context.watch<AppSettings>().locale;
+    real = NumberFormat.currency(locale: loc['locale'],name: loc['name']);
   }
 }
