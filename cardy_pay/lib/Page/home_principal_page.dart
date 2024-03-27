@@ -114,7 +114,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                             height: MediaQuery.of(context).size.height / 8.8,
                             decoration: BoxDecoration(
                                 color: Colors.black45, borderRadius: BorderRadius.circular(10)),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
@@ -122,7 +122,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Positions",
                                         style: TextStyle(
                                           fontSize: 15,
@@ -130,13 +130,16 @@ class _HomePrincipalState extends State<HomePrincipal> {
                                         ),
                                       ),
                                       Text(
-                                        "\$13553.00",
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                        real.format(totalCarteira),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                      )
                                       )
                                     ],
                                   ),
                                 ),                     
-                                Icon(
+                                const Icon(
                                   Icons.arrow_forward_ios_outlined,                      
                                 ),
                               ],
