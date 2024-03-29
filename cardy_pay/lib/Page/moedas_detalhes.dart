@@ -147,7 +147,7 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
                     return "Informe o valor da compra";
                   } else if (double.parse(value) < 50) {
                     return "Comprar minina é R\$ 50,00";
-                  } else if (double.parse(value) <= conta.saldo ) {
+                  } else if (double.parse(value) > conta.saldo ) {
                     return "Você não tem saldo suficiente!";
                   }
                   return null;

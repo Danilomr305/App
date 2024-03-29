@@ -1,4 +1,6 @@
+import 'package:cardy_pay/Page/configuracoes_page.dart';
 import 'package:cardy_pay/Page/favoritas_page.dart';
+import 'package:cardy_pay/Page/moedas_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../configs/app_settings.dart';
 import '../repository/conta_repository.dart';
 import '../widgets/grid_widgets.dart';
+import 'noticacoes_page.dart';
 
 class HomePrincipal extends StatefulWidget {
   const HomePrincipal({super.key});
@@ -69,11 +72,22 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       'Welcome, Dnl!',
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                  ),
-                  const Icon(
-                    CupertinoIcons.bell,
-                    size: 37,
-                  )
+                  ),                  
+                  InkWell(
+                    onTap: () {
+                      Navigator.push( context, 
+                        MaterialPageRoute(
+                          builder: (context) => const NotificacaoPage()
+                        ),
+                      );
+                    },
+                    child: const Icon(
+                      CupertinoIcons.bell,
+                      size: 37,
+                    ),
+                  ),  
+
+                                 
                 ],
               ),
             ),
@@ -147,9 +161,19 @@ class _HomePrincipalState extends State<HomePrincipal> {
                                 )
                               ],
                             ),
-                          ),                     
-                          const Icon(
-                            Icons.arrow_forward_ios_outlined,                      
+                          ),     
+
+                          InkWell(
+                            onTap: () {
+                              Navigator.push( context, 
+                                MaterialPageRoute(
+                                  builder: (context) => const ConfiguracoesPage()
+                                ),
+                              );
+                            },
+                            child: const Icon(
+                              Icons.arrow_forward_ios_outlined,                      
+                            ),
                           ),
                         ],
                       ),
@@ -165,10 +189,10 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       height: MediaQuery.of(context).size.height / 8.8,
                       decoration: BoxDecoration(
                           color: Colors.black45, borderRadius: BorderRadius.circular(10)),
-                      child: const Row(
+                      child:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +211,17 @@ class _HomePrincipalState extends State<HomePrincipal> {
                               ],
                             ),
                           ),
-                          Icon(Icons.arrow_forward_ios_outlined),
+
+                          InkWell(
+                            onTap: () {
+                              Navigator.push( context, 
+                                MaterialPageRoute(
+                                  builder: (context) => const MoedasPage()
+                                ),
+                              );
+                            },
+                            child: const Icon(Icons.arrow_forward_ios_outlined)
+                          ),
                         ],
                       ),
                     )
