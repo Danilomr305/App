@@ -62,7 +62,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 8, right: 8),
+              padding: const EdgeInsets.only(top: 25, left: 8, right: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -217,8 +217,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
                               Navigator.push( context, 
                                 MaterialPageRoute(
                                   builder: (context) => const MoedasPage()
-                                ),
-                              );
+                                ),                        
+                              );  
                             },
                             child: const Icon(Icons.arrow_forward_ios_outlined)
                           ),

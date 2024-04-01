@@ -71,13 +71,29 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       return 
           ValueListenableBuilder(
             valueListenable: PreferenciaTema.tema,
-            builder: (BuildContext context, Brightness tema, _) => Scaffold(
-                
+            builder: (BuildContext context, Brightness tema, _) => 
+              Scaffold(
+                drawer: Drawer(
+                  backgroundColor: Colors.black,
+                  child: ListView(
+                    children: const [
+                    UserAccountsDrawerHeader(
+                      accountName: CircleAvatar(), 
+                      accountEmail: Text(
+                        'danilomr305@gmail.com'
+                      )
+                    ),
+                    Card()
+                  ],
+                  ),
+
+                ),
                 backgroundColor: backgroundColor,
                 bottomNavigationBar: MyBottomNavBar(
                   onTabChange: (index) => navigateBottomBar(index),
                 ),
                 body: _pages[_selectedIndex],
+                
               ),
          );
   }
