@@ -2,6 +2,7 @@
 
 import 'package:cardy_pay/Page/moedas_page.dart';
 import 'package:cardy_pay/Page/home_principal_page.dart';
+import 'package:cardy_pay/components/bottom_drawer.dart';
 import 'package:cardy_pay/models/moeda_models.dart';
 import 'package:flutter/material.dart';
 import '../components/bottom_nav_bar.dart';
@@ -73,21 +74,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             valueListenable: PreferenciaTema.tema,
             builder: (BuildContext context, Brightness tema, _) => 
               Scaffold(
-                drawer: Drawer(
-                  backgroundColor: Colors.black,
-                  child: ListView(
-                    children: const [
-                    UserAccountsDrawerHeader(
-                      accountName: CircleAvatar(), 
-                      accountEmail: Text(
-                        'danilomr305@gmail.com'
-                      )
-                    ),
-                    Card()
-                  ],
-                  ),
-
-                ),
                 backgroundColor: backgroundColor,
                 bottomNavigationBar: MyBottomNavBar(
                   onTabChange: (index) => navigateBottomBar(index),

@@ -1,6 +1,9 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:cardy_pay/Page/configuracoes_page.dart';
 import 'package:cardy_pay/Page/favoritas_page.dart';
 import 'package:cardy_pay/Page/moedas_page.dart';
+import 'package:cardy_pay/components/bottom_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +13,7 @@ import 'package:provider/provider.dart';
 import '../configs/app_settings.dart';
 import '../repository/conta_repository.dart';
 import '../widgets/grid_widgets.dart';
+// ignore: unused_import
 import 'noticacoes_page.dart';
 
 class HomePrincipal extends StatefulWidget {
@@ -58,40 +62,23 @@ class _HomePrincipalState extends State<HomePrincipal> {
     setTotalCarteira();
     
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Welcome, Dnl!',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+      ),
+      drawer: const  Drawer(
+        child: BottomDrawer(), 
+                
+      ),
+
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 25, left: 8, right: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: const Text(
-                      'Welcome, Dnl!',
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                  ),                  
-                  InkWell(
-                    onTap: () {
-                      Navigator.push( context, 
-                        MaterialPageRoute(
-                          builder: (context) => const NotificacaoPage()
-                        ),
-                      );
-                    },
-                    child: const Icon(
-                      CupertinoIcons.bell,
-                      size: 37,
-                    ),
-                  ),  
-
-                                 
-                ],
-              ),
-            ),
-        
+          children: [     
             const Divider(),
         
             const SizedBox(
