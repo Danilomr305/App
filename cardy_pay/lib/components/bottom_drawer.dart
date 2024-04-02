@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:icofont_flutter/icofont_flutter.dart';
 
 class BottomDrawer extends StatefulWidget {
   const BottomDrawer({super.key});
@@ -22,7 +24,170 @@ class _BottomDrawerState extends State<BottomDrawer> {
               'danilomr305@gmail.com'
             )
           ),
-          Card()
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              
+              Padding(
+                padding: EdgeInsets.all(
+                  12
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.home_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                    Text(
+                      'INiCIO',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),              
+              ),
+
+              Divider(color: Colors.white,),
+
+              SizedBox(
+                height: 15,
+              ),
+
+              Padding(
+                padding: EdgeInsets.all(
+                  12
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      IcoFontIcons.notification,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                    Text(
+                      'NOTIFICACÕES',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),             
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
+
+              Padding(
+                padding: EdgeInsets.all(
+                  12
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      IcoFontIcons.history,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                    Text(
+                      'HISTORICO',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),             
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
+
+              Padding(
+                padding: EdgeInsets.all(
+                  12
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      IcoFontIcons.coins,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                    Text(
+                      'PAGAMENTOS',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),             
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
+
+              Padding(
+                padding: EdgeInsets.all(
+                  12
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.login_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+                    Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),              
+              )              
+            ],
+          )
         ],
       ),
     );

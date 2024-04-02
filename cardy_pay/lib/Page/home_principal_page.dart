@@ -71,7 +71,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
           ),
         ),
       ),
-      drawer: const  Drawer(
+      drawer: const Drawer(
         child: BottomDrawer(), 
                 
       ),
