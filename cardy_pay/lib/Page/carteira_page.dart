@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, unnecessary_import
+// ignore_for_file: sized_box_for_whitespace, unnecessary_import, unnecessary_string_escapes
 // ignore: unused_import
 import 'package:fl_chart/fl_chart.dart';
 import 'package:cardy_pay/configs/app_settings.dart';
@@ -175,6 +175,25 @@ class _CarteiraPageState extends State<CarteiraPage> {
           ],
         )
       ],
+    );
+  }
+
+  loadHistorico() {
+    final historico = conta.historico;
+    final date = DateFormat('dd\MM\yyyy - hh:mm');
+    List<Widget> widgets = [];
+
+    for (var  operacao in historico) {
+      widgets.add(ListTile(
+        title: Text(operacao.moeda.nome),
+        subtitle: Text(date.format(operacao.dataOperacacao)),
+        trailing: 
+        Text(real.format((operacao.moeda.preco * operacao.quantidade))),
+      ));
+      widgets.add( const Divider());
+    }
+    return Column(
+      children: widgets,
     );
   }
 }

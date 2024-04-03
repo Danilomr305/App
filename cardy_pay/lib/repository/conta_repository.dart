@@ -5,16 +5,19 @@ import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../database/db.dart';
+import '../models/historico.dart';
 import '../models/moeda_models.dart';
 import '../models/posicao.dart';
 
 class ContaRepository extends ChangeNotifier {
   late Database db;
   late final List<Posicao> _carteira = [];
+  late final List<Historico> _historico = [];
   late double _saldo = 0;
 
   get saldo => _saldo;
   List<Posicao> get carteira => _carteira;
+  List<Historico> get historico => _historico;
 
   ContaRepository() {
     _initRepository();
@@ -23,6 +26,7 @@ class ContaRepository extends ChangeNotifier {
   _initRepository() async {
     await _getSaldo();
     await _getCarteira();
+    await _getHistorico();
   }
 
   _getSaldo() async {
@@ -97,6 +101,26 @@ class ContaRepository extends ChangeNotifier {
         _carteira.add(Posicao(
           moeda: moeda, 
           quantidade: double.parse(posicao('quantidade')),
+        ));
+      });
+      notifyListeners();
+    }
+
+    _getHistorico() async {
+      final _historico = [];
+      List operacoes = await db.query('historico');
+      operacoes.forEach((operacao) {
+        Moeda moeda = MoedaRepository.tabela.firstWhere(
+          (m) => m.sigla == operacao['sigla'],
+        );
+       _historico.add(
+        Historico(
+          dataOperacacao: 
+            DateTime.fromMillisecondsSinceEpoch(operacao['data_operacao']), 
+          tipooperacao: operacao['tipo_operacao'], 
+          moeda: moeda, 
+          valor: operacao['valor'], 
+          quantidade: double.parse(operacao['quantidade'])
         ));
       });
       notifyListeners();

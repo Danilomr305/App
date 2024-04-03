@@ -46,7 +46,7 @@ class _BottomDrawerState extends State<BottomDrawer> {
                     ),
 
                     Text(
-                      'INiCIO',
+                      'INICIO',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
