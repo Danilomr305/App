@@ -2,14 +2,14 @@ import 'moeda_models.dart';
 
 class Historico {
   DateTime dataOperacao;
-  String tipoperacao;
+  String tipoOperacao;
   Moeda moeda;
   double valor;
   double quantidade;
 
   Historico({
     required this.dataOperacao,
-    required this.tipoperacao,
+    required this.tipoOperacao,
     required this.moeda,
     required this.valor,
     required this.quantidade,
