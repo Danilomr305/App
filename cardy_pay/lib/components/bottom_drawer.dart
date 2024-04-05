@@ -17,11 +17,19 @@ class _BottomDrawerState extends State<BottomDrawer> {
       child: ListView(
         children: const  [
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.white
+            ),
             accountName: CircleAvatar(
               
             ), 
             accountEmail: Text(
-              'danilomr305@gmail.com'
+              'danilomr305@gmail.com',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
+              ),
             )
           ),
 
@@ -37,7 +45,7 @@ class _BottomDrawerState extends State<BottomDrawer> {
                   children: [
                     Icon(
                       Icons.home_outlined,
-                      color: Colors.white,
+                      color: Colors.black45,
                       size: 30,
                     ),
 
