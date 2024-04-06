@@ -1,4 +1,7 @@
 
+// ignore_for_file: deprecated_member_use
+
+import 'package:cardy_pay/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -44,6 +47,29 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                   IconButton(onPressed: updateSaldo, icon: const Icon(Icons.edit)),
             ),
             const Divider(),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: OutlinedButton(
+                onPressed: () => context.read<AuthService>().logout(), 
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.red
+                ),
+                child: const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        'Sair do App',
+                        style: TextStyle(
+                          fontSize: 18
+                        ),
+                      ),
+                    ),
+                  ]
+                ),
+              )   
+            )
           ],
         ),
       ),

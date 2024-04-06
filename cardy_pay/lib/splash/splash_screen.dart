@@ -1,6 +1,7 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, unused_import
 
 import 'package:cardy_pay/Page/home_page.dart';
+import 'package:cardy_pay/widgets/auth_check.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ],
           ),
-          nextScreen: const HomePage(),
+          nextScreen: const AuthCkeck(),
     );
   }
 }
