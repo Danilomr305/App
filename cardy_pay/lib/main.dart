@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 import 'package:cardy_pay/repository/conta_repository.dart';
+import 'package:cardy_pay/repository/moedas_repository.dart';
 import 'package:cardy_pay/services/auth_service.dart';
 import 'package:hive/hive.dart';
 import 'package:cardy_pay/Page/home_page.dart';
@@ -13,7 +14,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'configs/hive_config.dart';
 
 
-void main () async {
+ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await  HiveConfig.start();
