@@ -19,9 +19,9 @@ class _AuthCkeckState extends State<AuthCkeck> {
 
     AuthService auth = Provider.of<AuthService>(context);
    
-    if (auth.isLoading) {
+    if (auth.isLoading) 
       return loading();
-    } else if (auth.usuario == null)
+     else if (auth.usuario == null)
       return const LoginPage();
     else 
       return const HomePrincipal();
