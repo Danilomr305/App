@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ],
           ),
-          nextScreen: const AuthCkeck(),
+          nextScreen: const AuthCheck(),
     );
   }
 }

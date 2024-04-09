@@ -1,3 +1,4 @@
+import 'package:cardy_pay/Pages_Drawer/historico_page.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:icofont_flutter/icofont_flutter.dart';
@@ -15,8 +16,8 @@ class _BottomDrawerState extends State<BottomDrawer> {
     return Drawer(
       backgroundColor: Colors.black,
       child: ListView(
-        children: const  [
-          UserAccountsDrawerHeader(
+        children:  [
+          const UserAccountsDrawerHeader(
             decoration: BoxDecoration(
               color: Colors.white
             ),
@@ -37,7 +38,7 @@ class _BottomDrawerState extends State<BottomDrawer> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(
                   12
                 ),
@@ -65,13 +66,13 @@ class _BottomDrawerState extends State<BottomDrawer> {
                 ),              
               ),
 
-              Divider(color: Colors.white,),
+              const Divider(color: Colors.white,),
 
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(
                   12
                 ),
@@ -99,43 +100,52 @@ class _BottomDrawerState extends State<BottomDrawer> {
                 ),             
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
               Padding(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   12
                 ),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       IcoFontIcons.history,
                       color: Colors.white,
                       size: 30,
                     ),
 
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
 
-                    Text(
-                      'HISTORICO',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold
+                    InkWell(
+                      onTap: () {
+                              Navigator.push( context, 
+                                MaterialPageRoute(
+                                  builder: (context) => const HistoricoPage()
+                                ),
+                              );
+                            },
+                      child: const Text(
+                        'HISTORICO',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
                   ],
                 ),             
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(
                   12
                 ),
@@ -163,11 +173,11 @@ class _BottomDrawerState extends State<BottomDrawer> {
                 ),             
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
 
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(
                   12
                 ),
