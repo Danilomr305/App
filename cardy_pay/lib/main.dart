@@ -30,7 +30,9 @@ import 'configs/hive_config.dart';
           create: (context) => ContaRepository(),
         ),
         ChangeNotifierProvider(
-          create: (context) => FavoritasRepository(),
+          create: (context) => FavoritasRepository(
+            auth: context.read<AuthService>(),
+          ),
         ),
         ChangeNotifierProvider(
           create: (context) => AppSettings(),

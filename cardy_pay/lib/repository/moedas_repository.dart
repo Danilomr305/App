@@ -4,7 +4,7 @@ class MoedaRepository {
   static List<Moeda> tabela = [
     Moeda(
       icone: 'imagens/logotipo-facebook.jpg', 
-      nome: 'Fecebook', 
+      nome: 'Facebook', 
       sigla: 'Fc', 
       preco: 123
     ),
