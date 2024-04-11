@@ -66,11 +66,12 @@ class _MoedasDetalhesPageState extends State<MoedasDetalhesPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 50,
-                  child: Image.asset(widget.moeda.icone)
+              children: [          
+                Image.network(
+                  widget.moeda.icone,
+                  scale: 2.5,
                 ),
+                
                 Container(width: 10),
                 Text(
                   real.format(widget.moeda.preco),
