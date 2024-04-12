@@ -37,29 +37,13 @@ class _HomePrincipalState extends State<HomePrincipal> {
   double totalCarteira = 0;
   double saldo = 0;
   late NumberFormat real;
-  late ContaRepository conta;
-
-
   
 
   @override
   Widget build(BuildContext context) {
-    conta = context.watch<ContaRepository>();
+    final conta = context.watch<ContaRepository>();
     final loc = context.read<AppSettings>().locale;
     real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
-    saldo = conta.saldo;
-
-    setTotalCarteira() {
-    final carteiraList = conta.carteira;
-    setState(() {
-      totalCarteira = conta.saldo;
-        for (var posicao in carteiraList) {
-          totalCarteira += posicao.moeda.preco = posicao.quantidade;
-        }
-    });
-    } 
-
-    setTotalCarteira();
     
     return Scaffold(
       appBar: AppBar(
@@ -90,7 +74,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    real.format(totalCarteira),
+                    real.format(conta.saldo),
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 34,
@@ -140,7 +124,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                                   ),
                                 ),
                                 Text(
-                                  real.format(totalCarteira),
+                                  real.format(conta.saldo),
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,

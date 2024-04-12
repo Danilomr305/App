@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, unused_local_variable
 import 'package:cardy_pay/repository/conta_repository.dart';
 import 'package:cardy_pay/repository/moedas_repository.dart';
 import 'package:cardy_pay/services/auth_service.dart';
@@ -16,7 +16,7 @@ import 'configs/hive_config.dart';
 
  void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+  late ContaRepository conta;
   await  HiveConfig.start();
   await Firebase.initializeApp();
   
