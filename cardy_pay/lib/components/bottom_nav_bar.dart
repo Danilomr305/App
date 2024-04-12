@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../components/bottom_nav_bar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
-
 // ignore: must_be_immutable
 class MyBottomNavBar extends StatelessWidget {
   void Function(int)? onTabChange;

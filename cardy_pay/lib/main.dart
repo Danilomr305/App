@@ -16,7 +16,7 @@ import 'configs/hive_config.dart';
 
  void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  
   await  HiveConfig.start();
   await Firebase.initializeApp();
   
@@ -27,11 +27,17 @@ import 'configs/hive_config.dart';
           create: (context) => AuthService(),
         ),
         ChangeNotifierProvider(
-          create: (context) => ContaRepository(),
+          create: (context) => ContaRepository(
+            moedas: context.read<MoedaRepository>(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MoedaRepository(),
         ),
         ChangeNotifierProvider(
           create: (context) => FavoritasRepository(
             auth: context.read<AuthService>(),
+            moedas: context.read<MoedaRepository>(),
           ),
         ),
         ChangeNotifierProvider(
