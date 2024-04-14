@@ -6,12 +6,8 @@ import 'package:cardy_pay/Page/moedas_page.dart';
 import 'package:cardy_pay/components/bottom_drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 // ignore: unused_import
 import 'package:line_icons/line_icon.dart';
-import 'package:provider/provider.dart';
-import '../configs/app_settings.dart';
-import '../repository/conta_repository.dart';
 import '../widgets/grid_widgets.dart';
 // ignore: unused_import
 import 'noticacoes_page.dart';
@@ -33,17 +29,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
     );            
   }
 
-  int index = 0;
-  double totalCarteira = 0;
-  double saldo = 0;
-  late NumberFormat real;
-  
-
   @override
   Widget build(BuildContext context) {
-    final conta = context.watch<ContaRepository>();
-    final loc = context.read<AppSettings>().locale;
-    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
     
     return Scaffold(
       appBar: AppBar(
@@ -68,25 +55,25 @@ class _HomePrincipalState extends State<HomePrincipal> {
             const SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
+            const Padding(
+              padding: EdgeInsets.only(left: 20),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    real.format(conta.saldo),
-                    style: const TextStyle(
+                    '1.200',
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 34,
                     ),
                 
                   ),
         
-                  const SizedBox(
+                  SizedBox(
                     width: 8,
                   ),
         
-                  const Text(
+                  Text(
                     "Saldo",
                     style: TextStyle(color: Colors.black26, fontSize: 15),
                   )
@@ -111,12 +98,12 @@ class _HomePrincipalState extends State<HomePrincipal> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
+                          const Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
+                                Text(
                                   "Positions",
                                   style: TextStyle(
                                     fontSize: 15,
@@ -124,8 +111,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
                                   ),
                                 ),
                                 Text(
-                                  real.format(conta.saldo),
-                                  style: const TextStyle(
+                                  '1,200',
+                                  style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
                                 )
