@@ -1,4 +1,7 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
 
 class DB {
@@ -17,7 +20,7 @@ class DB {
 
   _initDatabase() async {
     return await openDatabase(
-      join(await getDatabasesPath(), 'cripto.db'),
+      join(await getDatabasesPath(), 'criptoo.db'),
       version: 1,
       onCreate: _onCreate,
     );
