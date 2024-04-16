@@ -105,7 +105,7 @@ class _MoedasPageState extends State<MoedasPage> {
   @override
   Widget build(BuildContext context) {
 
-    favoritas = context.watch()<FavoritasRepository>(context);
+    favoritas = context.watch<FavoritasRepository>();
     moedas = context.watch<MoedaRepository>();
     tabela = moedas.tabela;
     readNumberFormat();

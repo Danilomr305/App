@@ -16,8 +16,7 @@ import 'configs/hive_config.dart';
 
  void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  late ContaRepository conta;
-  await  HiveConfig.start();
+  await HiveConfig.start();
   await Firebase.initializeApp();
   
   runApp(
@@ -27,12 +26,15 @@ import 'configs/hive_config.dart';
           create: (context) => AuthService(),
         ),
         ChangeNotifierProvider(
+          create: (context) => MoedaRepository(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => ContaRepository(
             moedas: context.read<MoedaRepository>(),
           ),
         ),
         ChangeNotifierProvider(
-          create: (context) => MoedaRepository(),
+          create: (context) => AppSettings(),
         ),
         ChangeNotifierProvider(
           create: (context) => FavoritasRepository(
@@ -40,9 +42,6 @@ import 'configs/hive_config.dart';
             moedas: context.read<MoedaRepository>(),
           ),
         ),
-        ChangeNotifierProvider(
-          create: (context) => AppSettings(),
-        )
       ],
       child: const MeuApp(),
     ),
