@@ -1,14 +1,10 @@
-
-// ignore_for_file: deprecated_member_use
-
-import 'package:cardy_pay/services/auth_service.dart';
+import '../configs/app_settings.dart';
+import '../repository/conta_repository.dart';
+import '../services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../configs/app_settings.dart';
-import '../repository/conta_repository.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
   const ConfiguracoesPage({Key? key}) : super(key: key);
@@ -47,29 +43,27 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                   IconButton(onPressed: updateSaldo, icon: const Icon(Icons.edit)),
             ),
             const Divider(),
-
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: OutlinedButton(
-                onPressed: () => context.read<AuthService>().logout(), 
-                style: OutlinedButton.styleFrom(
-                  primary: Colors.red
+                onPressed: () => context.read<AuthService>().logout(),
+                style: const ButtonStyle(
+                  alignment: Alignment.bottomCenter,
                 ),
                 child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: EdgeInsets.all(16.0),
                       child: Text(
                         'Sair do App',
-                        style: TextStyle(
-                          fontSize: 18
-                        ),
+                        style: TextStyle(fontSize: 18),
                       ),
                     ),
-                  ]
+                  ],
                 ),
-              )   
-            )
+              ),
+            ),
           ],
         ),
       ),
@@ -109,7 +103,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
               Navigator.pop(context);
             }
           },
-          child:const  Text('SALVAR'),
+          child: const Text('SALVAR'),
         ),
       ],
     );

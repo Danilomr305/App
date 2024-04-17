@@ -1,21 +1,17 @@
-// ignore_for_file: sized_box_for_whitespace, unnecessary_import, unnecessary_string_escapes
-// ignore: unused_import
+import '../configs/app_settings.dart';
+import '../models/posicao.dart';
+import '../repository/conta_repository.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:cardy_pay/configs/app_settings.dart';
-import 'package:cardy_pay/repository/conta_repository.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../models/posicao.dart';
-
 class CarteiraPage extends StatefulWidget {
-  
-  const CarteiraPage({super.key});
+  const CarteiraPage({Key? key}) : super(key: key);
 
   @override
-  State<CarteiraPage> createState() => _CarteiraPageState();
+  // ignore: library_private_types_in_public_api
+  _CarteiraPageState createState() => _CarteiraPageState();
 }
 
 class _CarteiraPageState extends State<CarteiraPage> {
@@ -25,10 +21,10 @@ class _CarteiraPageState extends State<CarteiraPage> {
   late NumberFormat real;
   late ContaRepository conta;
 
-  double graficoValor = 0;
   String graficoLabel = '';
+  double graficoValor = 0;
   List<Posicao> carteira = [];
-  
+
   @override
   Widget build(BuildContext context) {
     conta = context.watch<ContaRepository>();
@@ -40,34 +36,31 @@ class _CarteiraPageState extends State<CarteiraPage> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 48),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 48,bottom: 8),
-                child: Text(
-                  'Valor da Carteira',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold
-                  ),
+        padding: const EdgeInsets.only(top: 48),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 48, bottom: 8),
+              child: Text(
+                'Valor da Carteira',
+                style: TextStyle(
+                  fontSize: 18,
                 ),
               ),
-              Text(
-                real.format(totalCarteira),
-                style: const TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -1.5
-                ),
+            ),
+            Text(
+              real.format(totalCarteira),
+              style: const TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.w700,
+                letterSpacing: -1.5,
               ),
-              loadGrafico(),
-              loadHistorico(),
-            ],
-          ),
-        )
+            ),
+            loadGrafico(),
+            loadHistorico(),
+          ],
+        ),
       ),
     );
   }
@@ -99,17 +92,17 @@ class _CarteiraPageState extends State<CarteiraPage> {
     carteira = conta.carteira;
     final tamanhoLista = carteira.length + 1;
 
-    return List.generate(tamanhoLista, (i){
+    return List.generate(tamanhoLista, (i) {
       final isTouched = i == index;
       final isSaldo = i == tamanhoLista - 1;
       final fontSize = isTouched ? 18.0 : 14.0;
       final radius = isTouched ? 60.0 : 50.0;
-      final color = isTouched ? Colors.indigo.shade700 : Colors.indigo.shade400;
+      final color = isTouched ? Colors.tealAccent : Colors.tealAccent[400];
 
       double porcentagem = 0;
       if (!isSaldo) {
-        porcentagem = 
-        carteira[i].moeda.preco * carteira[i].quantidade / totalCarteira;
+        porcentagem =
+            carteira[i].moeda.preco * carteira[i].quantidade / totalCarteira;
       } else {
         porcentagem = (conta.saldo > 0) ? conta.saldo / totalCarteira : 0;
       }
@@ -123,76 +116,74 @@ class _CarteiraPageState extends State<CarteiraPage> {
         titleStyle: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
-          color: Colors.white
-        )
+          color: Colors.black87,
+        ),
       );
     });
   }
 
   loadGrafico() {
     return (conta.saldo <= 0)
-    ? Container(
-      width: MediaQuery.of(context).size.width ,
-      height: 200,
-      child:const  Center(
-        child: CircularProgressIndicator()
-        ),
-    )
-    :
-    Stack(
-      alignment: Alignment.center,
-      children: [
-        AspectRatio(
-          aspectRatio: 1,
-          child: PieChart(
-            PieChartData(
-              sectionsSpace: 5,
-              centerSpaceRadius: 110,
-              sections: loadCarteira(),
-              pieTouchData: PieTouchData(
-                touchCallback: (touch) => setState(() {
-                  index = touch.touchedSection!.touchedSectionIndex;
-                  setGraficoDados(index);
-                }),
-              )
-            )
-          ),
-        ),
-        Column(
-          children: [
-            Text(graficoLabel,
-              style:const  TextStyle(
-                fontSize: 20,
-                color: Colors.teal
-              ),
+        ? SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            child: const Center(
+              child: CircularProgressIndicator(),
             ),
-            
-            Text(
-              real.format(graficoValor),
-              style:const TextStyle(
-                fontSize: 28
+          )
+        : Stack(
+            alignment: Alignment.center,
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: PieChart(
+                  PieChartData(
+                    sectionsSpace: 5,
+                    centerSpaceRadius: 120,
+                    sections: loadCarteira(),
+                    pieTouchData: PieTouchData(
+                      touchCallback: (touch) => setState(() {
+                        index = touch.touchedSection!.touchedSectionIndex;
+                        setGraficoDados(index);
+                      }),
+                    ),
+                  ),
+                ),
               ),
-            )
-          ],
-        )
-      ],
-    );
+              Column(
+                children: [
+                  Text(
+                    graficoLabel,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  Text(
+                    real.format(graficoValor),
+                    style: const TextStyle(
+                      fontSize: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
   }
 
   loadHistorico() {
-
     final historico = conta.historico;
-    final date = DateFormat('dd\MM\yyyy - hh:mm');
+    final date = DateFormat('dd/MM/yyyy - hh:mm');
     List<Widget> widgets = [];
 
-    for (var  operacao in historico) {
+    for (var operacao in historico) {
       widgets.add(ListTile(
         title: Text(operacao.moeda.nome),
         subtitle: Text(date.format(operacao.dataOperacao)),
-        trailing: 
-        Text(real.format((operacao.moeda.preco * operacao.quantidade))),
+        trailing:
+            Text(real.format((operacao.moeda.preco * operacao.quantidade))),
       ));
-      widgets.add( const Divider());
+      widgets.add(const Divider());
     }
     return Column(
       children: widgets,

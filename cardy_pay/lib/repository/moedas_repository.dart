@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import '../database/db.dart';
 import '../models/moeda_models.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqlite_api.dart';
-import 'package:http/http.dart' as http;
+
 
 class MoedaRepository extends ChangeNotifier {
   List<Moeda> _tabela = [];
