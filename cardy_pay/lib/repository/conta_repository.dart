@@ -1,13 +1,10 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
-import 'package:cardy_pay/models/historico.dart';
-import 'package:cardy_pay/repository/moedas_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-
 import '../database/db.dart';
-import '../models/moeda_models.dart';
+import '../models/historico.dart';
+import '/models/moeda_models.dart';
 import '../models/posicao.dart';
+import '../repository/moedas_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:sqflite/sqlite_api.dart';
 
 class ContaRepository extends ChangeNotifier {
   late Database db;
@@ -49,12 +46,13 @@ class ContaRepository extends ChangeNotifier {
   comprar(Moeda moeda, double valor) async {
     db = await DB.instance.database;
     await db.transaction((txn) async {
+      // Verificar se a moeda já foi comprada
       final posicaoMoeda = await txn.query(
         'carteira',
         where: 'sigla = ?',
-        whereArgs: [moeda.sigla]
+        whereArgs: [moeda.sigla],
       );
-      
+      // Se não tem a moeda em carteira
       if (posicaoMoeda.isEmpty) {
         await txn.insert('carteira', {
           'sigla': moeda.sigla,
@@ -62,17 +60,18 @@ class ContaRepository extends ChangeNotifier {
           'quantidade': (valor / moeda.preco).toString()
         });
       }
-
+      // Já tem a moeda em carteira
       else {
         final atual = double.parse(posicaoMoeda.first['quantidade'].toString());
         await txn.update(
-          'carteira', 
+          'carteira',
           {'quantidade': (atual + (valor / moeda.preco)).toString()},
           where: 'sigla = ?',
-          whereArgs: [moeda.sigla]
+          whereArgs: [moeda.sigla],
         );
       }
 
+      // Inserir a compra no historico
       await txn.insert('historico', {
         'sigla': moeda.sigla,
         'moeda': moeda.nome,
@@ -82,6 +81,7 @@ class ContaRepository extends ChangeNotifier {
         'data_operacao': DateTime.now().millisecondsSinceEpoch
       });
 
+      //Atualizar o saldo
       await txn.update('conta', {'saldo': saldo - valor});
     });
     await _initRepository();
@@ -91,34 +91,36 @@ class ContaRepository extends ChangeNotifier {
   _getCarteira() async {
     _carteira = [];
     List posicoes = await db.query('carteira');
-    posicoes.forEach((posicao) { 
+    posicoes.forEach((posicao) {
       Moeda moeda = moedas.tabela.firstWhere(
-        (m) => m.sigla == posicao['sigla']
+        (m) => m.sigla == posicao['sigla'],
       );
       _carteira.add(Posicao(
-        moeda: moeda, 
+        moeda: moeda,
         quantidade: double.parse(posicao['quantidade']),
-        ));
-     });
-     notifyListeners();
+      ));
+    });
+    notifyListeners();
   }
 
   _getHistorico() async {
     _historico = [];
     List operacoes = await db.query('historico');
-    operacoes.forEach((operacao) { 
+    operacoes.forEach((operacao) {
       Moeda moeda = moedas.tabela.firstWhere(
-        (m) => m.sigla == operacao['sigla']
+        (m) => m.sigla == operacao['sigla'],
       );
-      _historico.add(Historico(
-        dataOperacao: 
-          DateTime.fromMillisecondsSinceEpoch(operacao['data_operacao']), 
-        tipoOperacao: operacao['tipo_operacao'], 
-        moeda: moeda,
-        valor: operacao['valor'], 
-        quantidade: double.parse(operacao['quantidade'])
-        ));
-     });
-     notifyListeners();
+      _historico.add(
+        Historico(
+          dataOperacao:
+              DateTime.fromMillisecondsSinceEpoch(operacao['data_operacao']),
+          tipoOperacao: operacao['tipo_operacao'],
+          moeda: moeda,
+          valor: operacao['valor'],
+          quantidade: double.parse(operacao['quantidade']),
+        ),
+      );
+    });
+    notifyListeners();
   }
 }

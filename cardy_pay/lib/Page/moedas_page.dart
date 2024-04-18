@@ -8,10 +8,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MoedasPage extends StatefulWidget {
-  const MoedasPage({super.key});
+  MoedasPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _MoedasPageState createState() => _MoedasPageState();
 }
 
@@ -67,19 +66,7 @@ class _MoedasPageState extends State<MoedasPage> {
         title: Text('${selecionadas.length} selecionadas'),
         backgroundColor: Colors.blueGrey[50],
         elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black87), toolbarTextStyle: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.black87,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ).bodyMedium, titleTextStyle: const TextTheme(
-          titleLarge: TextStyle(
-            color: Colors.black87,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ).titleLarge,
+        iconTheme: const IconThemeData(color: Colors.black87),
       );
     }
   }
@@ -122,8 +109,8 @@ class _MoedasPageState extends State<MoedasPage> {
                       child: Icon(Icons.check),
                     )
                   : SizedBox(
-                      width: 40,
                       child: Image.network(tabela[moeda].icone),
+                      width: 40,
                     ),
               title: Row(
                 children: [
@@ -155,7 +142,7 @@ class _MoedasPageState extends State<MoedasPage> {
               onTap: () => mostrarDetalhes(tabela[moeda]),
             );
           },
-          padding:const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           separatorBuilder: (_, ___) => const Divider(),
           itemCount: tabela.length,
         ),

@@ -24,7 +24,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
   pagefavoritas() {
     Navigator.push( context, 
       MaterialPageRoute(
-        builder: (context) => const FavoritasPage() 
+        builder: (context) => FavoritasPage() 
       ),
     );            
   }
@@ -125,7 +125,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                             onTap: () {
                               Navigator.push( context, 
                                 MaterialPageRoute(
-                                  builder: (context) => const ConfiguracoesPage()
+                                  builder: (context) => ConfiguracoesPage()
                                 ),
                               );
                             },
@@ -174,7 +174,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                             onTap: () {
                               Navigator.push( context, 
                                 MaterialPageRoute(
-                                  builder: (context) => const MoedasPage()
+                                  builder: (context) => MoedasPage()
                                 ),                        
                               );  
                             },

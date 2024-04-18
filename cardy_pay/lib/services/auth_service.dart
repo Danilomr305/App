@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class AuthException implements Exception {
   String message;
-
-  AuthException(
-    this.message
-  );
+  AuthException(this.message);
 }
 
 class AuthService extends ChangeNotifier {
@@ -19,11 +16,11 @@ class AuthService extends ChangeNotifier {
   }
 
   _authCheck() {
-      _auth.authStateChanges().listen((User? user) { 
-        usuario = (user == null) ? null : user;
-        isLoading = false;
-        notifyListeners();
-      });
+    _auth.authStateChanges().listen((User? user) {
+      usuario = (user == null) ? null : user;
+      isLoading = false;
+      notifyListeners();
+    });
   }
 
   _getUser() {
@@ -32,7 +29,7 @@ class AuthService extends ChangeNotifier {
   }
 
   registrar(String email, String senha) async {
-    try{
+    try {
       await _auth.createUserWithEmailAndPassword(email: email, password: senha);
       _getUser();
     } on FirebaseAuthException catch (e) {
@@ -45,17 +42,18 @@ class AuthService extends ChangeNotifier {
   }
 
   login(String email, String senha) async {
-    try{
-      await _auth.createUserWithEmailAndPassword(email: email, password: senha);
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: senha);
       _getUser();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw AuthException('Email não encontrado. Cadastre-se.');
       } else if (e.code == 'wrong-password') {
-        throw AuthException('Senha incorreta. Tente novamente!');
+        throw AuthException('Senha incorreta. Tente novamente');
       }
     }
   }
+
   logout() async {
     await _auth.signOut();
     _getUser();

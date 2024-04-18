@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import '../configs/app_settings.dart';
 import '../repository/conta_repository.dart';
 import '../services/auth_service.dart';
@@ -7,10 +9,9 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
-  const ConfiguracoesPage({super.key});
+  ConfiguracoesPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _ConfiguracoesPageState createState() => _ConfiguracoesPageState();
 }
 
@@ -47,8 +48,8 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: OutlinedButton(
                 onPressed: () => context.read<AuthService>().logout(),
-                style: const ButtonStyle(
-                  alignment: Alignment.bottomCenter,
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.red,
                 ),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,

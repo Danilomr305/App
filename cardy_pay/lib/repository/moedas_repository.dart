@@ -1,13 +1,11 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import '../database/db.dart';
 import '../models/moeda_models.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqlite_api.dart';
-
+import 'package:http/http.dart' as http;
 
 class MoedaRepository extends ChangeNotifier {
   List<Moeda> _tabela = [];
@@ -19,12 +17,12 @@ class MoedaRepository extends ChangeNotifier {
     _setupMoedasTable();
     _setupDadosTableMoeda();
     _readMoedasTable();
-   _refreshPrecos();
+    // _refreshPrecos();
   }
 
-  _refreshPrecos() async {
-     intervalo = Timer.periodic(const Duration(minutes: 5), (_) => checkPrecos());
-  }
+  // _refreshPrecos() async {
+  //   intervalo = Timer.periodic(Duration(minutes: 5), (_) => checkPrecos());
+  // }
 
   getHistoricoMoeda(Moeda moeda) async {
     final response = await http.get(
@@ -59,8 +57,8 @@ class MoedaRepository extends ChangeNotifier {
       Database db = await DB.instance.database;
       Batch batch = db.batch();
 
-      for (var atual in _tabela) {
-        for (var novo in moedas) {
+      _tabela.forEach((atual) {
+        moedas.forEach((novo) {
           if (atual.baseId == novo['base_id']) {
             final moeda = novo['prices'];
             final preco = moeda['latest_price'];
@@ -82,8 +80,8 @@ class MoedaRepository extends ChangeNotifier {
               whereArgs: [atual.baseId],
             );
           }
-        }
-      }
+        });
+      });
       await batch.commit(noResult: true);
       await _readMoedasTable();
     }
@@ -156,7 +154,7 @@ class MoedaRepository extends ChangeNotifier {
   }
 
   _setupMoedasTable() async {
-    const String table = '''
+    final String table = '''
       CREATE TABLE IF NOT EXISTS moedas (
         baseId TEXT PRIMARY KEY,
         sigla TEXT,
@@ -172,7 +170,7 @@ class MoedaRepository extends ChangeNotifier {
         mudancaPeriodoTotal TEXT
       );
     ''';
-    Database db = DB.instance.database;
+    Database db = await DB.instance.database;
     await db.execute(table);
   }
 }

@@ -1,20 +1,19 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls
-
 import 'dart:collection';
-import 'package:cardy_pay/database/db_firestore.dart';
-import 'package:cardy_pay/repository/moedas_repository.dart';
-import 'package:cardy_pay/services/auth_service.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import '../database/db_firestore.dart';
 import '../models/moeda_models.dart';
+import '../repository/moedas_repository.dart';
+import '../services/auth_service.dart';
+import 'package:flutter/material.dart';
 
 class FavoritasRepository extends ChangeNotifier {
-  final List<Moeda> _lista = [];
+  List<Moeda> _lista = [];
   late FirebaseFirestore db;
   late AuthService auth;
   MoedaRepository moedas;
 
-  FavoritasRepository( {required this.auth, required this.moedas}) {
+  FavoritasRepository({required this.auth, required this.moedas}) {
     _startRepository();
   }
 
@@ -28,42 +27,48 @@ class FavoritasRepository extends ChangeNotifier {
   }
 
   _readFavoritas() async {
-    if(auth.usuario != null  && _lista.isEmpty) {
+    if (auth.usuario != null && _lista.isEmpty) {
+      try {
+        final snapshot = await db
+            .collection('usuarios/${auth.usuario!.uid}/favoritas')
+            .get();
 
-      final snapshot = 
-        await db.collection('usuarios/${auth.usuario!.uid}/favoritas').get();
-
-      snapshot.docs.forEach((doc) {
-        Moeda moeda = moedas.tabela.firstWhere((moeda) => moeda.sigla == doc.get('sigla'));
-        _lista.add(moeda);
-        notifyListeners();
-      });
+        snapshot.docs.forEach((doc) {
+          Moeda moeda = moedas.tabela
+              .firstWhere((moeda) => moeda.sigla == doc.get('sigla'));
+          _lista.add(moeda);
+          notifyListeners();
+        });
+      } catch (e) {
+        print('Sem id de usuário');
+      }
     }
   }
 
   UnmodifiableListView<Moeda> get lista => UnmodifiableListView(_lista);
-  saveAll(List<Moeda> moedas) async {
-    for (var moeda in moedas) {
-      if(! _lista.any((atual) => atual.sigla  == moeda.sigla)) {
+
+  saveAll(List<Moeda> moedas) {
+    moedas.forEach((moeda) async {
+      if (!_lista.any((atual) => atual.sigla == moeda.sigla)) {
         _lista.add(moeda);
-        await db.collection('usuarios/${auth.usuario!.uid}/favoritas')
-        .doc(moeda.sigla)
-        .set({
+        await db
+            .collection('usuarios/${auth.usuario!.uid}/favoritas')
+            .doc(moeda.sigla)
+            .set({
           'moeda': moeda.nome,
           'sigla': moeda.sigla,
           'preco': moeda.preco,
         });
-      } 
-    }
+      }
+    });
     notifyListeners();
   }
 
-  remove(Moeda moeda)  async{
-    await db.collection('usuarios/${auth.usuario!.uid}/favoritas')
-    .doc(
-      moeda.sigla
-    ).
-    delete();
+  remove(Moeda moeda) async {
+    await db
+        .collection('usuarios/${auth.usuario!.uid}/favoritas')
+        .doc(moeda.sigla)
+        .delete();
     _lista.remove(moeda);
     notifyListeners();
   }

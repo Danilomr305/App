@@ -1,16 +1,11 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:provider/provider.dart';
-// ignore: unused_import, duplicate_import
 import '../services/auth_service.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  LoginPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -46,23 +41,25 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  login () async {
+  login() async {
     setState(() => loading = true);
     try {
       await context.read<AuthService>().login(email.text, senha.text);
     } on AuthException catch (e) {
       setState(() => loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
 
-  registrar () async {
+  registrar() async {
     setState(() => loading = true);
     try {
       await context.read<AuthService>().registrar(email.text, senha.text);
-    } on AuthException catch (e){
+    } on AuthException catch (e) {
       setState(() => loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
 
@@ -103,7 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(24),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                   child: TextFormField(
                     controller: senha,
                     obscureText: true,
@@ -113,9 +111,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Informe a sua senha!';
-                      } else if (value.length < 6 ) {
-                        return 'Sua senha deve ter no minimo 6 caracteres';
+                        return 'Informa sua senha!';
+                      } else if (value.length < 6) {
+                        return 'Sua senha deve ter no mínimo 6 caracteres';
                       }
                       return null;
                     },
@@ -136,39 +134,35 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: (loading)
-                      ? [
-                        const Padding(
-                          padding: EdgeInsets.all(16),
-                          child: SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          ),
-                          ),
-                      ]
-                      
-                      :[
-                        const Icon(Icons.check),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            actionButton,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ),
-                      ],
+                          ? [
+                              const Padding(
+                                padding: EdgeInsets.all(16),
+                                child: SizedBox(
+                                  width: 24,
+                                  height: 24,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ]
+                          : [
+                              const Icon(Icons.check),
+                              Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Text(
+                                  actionButton,
+                                  style: const TextStyle(fontSize: 20),
+                                ),
+                              ),
+                            ],
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: () => setFormAction(!isLogin), 
+                  onPressed: () => setFormAction(!isLogin),
                   child: Text(toggleButton),
-                  ),
+                ),
               ],
             ),
           ),

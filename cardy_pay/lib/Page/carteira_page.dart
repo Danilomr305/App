@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import '../configs/app_settings.dart';
 import '../models/posicao.dart';
 import '../repository/conta_repository.dart';
@@ -6,11 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+
 class CarteiraPage extends StatefulWidget {
   const CarteiraPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _CarteiraPageState createState() => _CarteiraPageState();
 }
 
@@ -142,7 +144,10 @@ class _CarteiraPageState extends State<CarteiraPage> {
                     centerSpaceRadius: 120,
                     sections: loadCarteira(),
                     pieTouchData: PieTouchData(
-                      
+                      touchCallback: (touch) => setState(() {
+                        index = touch.touchedSection!.touchedSectionIndex;
+                        setGraficoDados(index);
+                      }),
                     ),
                   ),
                 ),
@@ -188,5 +193,3 @@ class _CarteiraPageState extends State<CarteiraPage> {
   }
 }
 
-mixin touchedSection {
-}
