@@ -1,7 +1,4 @@
-// ignore_for_file: unnecessary_import
-
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
 
 class DB {

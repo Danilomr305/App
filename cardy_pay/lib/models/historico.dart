@@ -1,4 +1,4 @@
-import 'moeda_models.dart';
+import '../models/moeda_models.dart';
 
 class Historico {
   DateTime dataOperacao;
@@ -13,6 +13,5 @@ class Historico {
     required this.moeda,
     required this.valor,
     required this.quantidade,
-
   });
 }

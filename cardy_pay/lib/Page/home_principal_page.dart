@@ -61,7 +61,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    '1.200',
+                    '1.201',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 34,
