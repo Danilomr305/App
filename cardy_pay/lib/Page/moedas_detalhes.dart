@@ -14,7 +14,7 @@ import 'package:icofont_flutter/icofont_flutter.dart';
 class MoedasDetalhesPage extends StatefulWidget {
   Moeda moeda;
 
-  MoedasDetalhesPage({Key? key, required this.moeda}) : super(key: key);
+  MoedasDetalhesPage({super.key, required this.moeda});
 
   @override
   // ignore: library_private_types_in_public_api

@@ -11,7 +11,7 @@ import '../repository/favoritas_repository.dart';
 class MoedaCard extends StatefulWidget {
   Moeda moeda;
 
-  MoedaCard({Key? key, required this.moeda}) : super(key: key);
+  MoedaCard({super.key, required this.moeda});
 
   @override
   _MoedaCardState createState() => _MoedaCardState();

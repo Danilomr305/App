@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -17,12 +19,12 @@ class MoedaRepository extends ChangeNotifier {
     _setupMoedasTable();
     _setupDadosTableMoeda();
     _readMoedasTable();
-    // _refreshPrecos();
+   _refreshPrecos();
   }
 
-  // _refreshPrecos() async {
-  //   intervalo = Timer.periodic(Duration(minutes: 5), (_) => checkPrecos());
-  // }
+  _refreshPrecos() async {
+     intervalo = Timer.periodic(const Duration(minutes: 5), (_) => checkPrecos());
+  }
 
   getHistoricoMoeda(Moeda moeda) async {
     final response = await http.get(
@@ -129,7 +131,7 @@ class MoedaRepository extends ChangeNotifier {
         Database db = await DB.instance.database;
         Batch batch = db.batch();
 
-        for (var moeda in moedas) {
+        moedas.forEach((moeda) {
           final preco = moeda['latest_price'];
           final timestamp = DateTime.parse(preco['timestamp']);
 
@@ -147,7 +149,7 @@ class MoedaRepository extends ChangeNotifier {
             'mudancaAno': preco['percent_change']['year'].toString(),
             'mudancaPeriodoTotal': preco['percent_change']['all'].toString()
           });
-        }
+        });
         await batch.commit(noResult: true);
       }
     }
@@ -170,7 +172,7 @@ class MoedaRepository extends ChangeNotifier {
         mudancaPeriodoTotal TEXT
       );
     ''';
-    Database db = await DB.instance.database;
+    Database db = DB.instance.database;
     await db.execute(table);
   }
 }

@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CarteiraPage extends StatefulWidget {
-  const CarteiraPage({Key? key}) : super(key: key);
+  const CarteiraPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -142,10 +142,14 @@ class _CarteiraPageState extends State<CarteiraPage> {
                     centerSpaceRadius: 120,
                     sections: loadCarteira(),
                     pieTouchData: PieTouchData(
-                      touchCallback: (touch) => setState(() {
-                        index = touch.touchedSection!.touchedSectionIndex;
-                        setGraficoDados(index);
-                      }),
+                      touchCallback: (FlTouchEvent touch, PieTouchResponse? touchResponse) {
+                        setState(() {
+                          if (touchResponse != null && touchResponse.touchedSection != null) {
+                            index = touchResponse.touchedSection!.touchedSectionIndex;
+                            setGraficoDados(index);
+                          }
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -189,4 +193,7 @@ class _CarteiraPageState extends State<CarteiraPage> {
       children: widgets,
     );
   }
+}
+
+mixin touchedSection {
 }

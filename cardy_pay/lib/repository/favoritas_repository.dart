@@ -34,8 +34,7 @@ class FavoritasRepository extends ChangeNotifier {
         await db.collection('usuarios/${auth.usuario!.uid}/favoritas').get();
 
       snapshot.docs.forEach((doc) {
-        Moeda moeda = moedas.tabela
-          .firstWhere((moeda) => moeda.sigla == doc.get('sigla'));
+        Moeda moeda = moedas.tabela.firstWhere((moeda) => moeda.sigla == doc.get('sigla'));
         _lista.add(moeda);
         notifyListeners();
       });

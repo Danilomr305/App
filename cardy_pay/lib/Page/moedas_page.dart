@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MoedasPage extends StatefulWidget {
-  const MoedasPage({Key? key}) : super(key: key);
+  const MoedasPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
