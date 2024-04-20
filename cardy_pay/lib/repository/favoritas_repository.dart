@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, avoid_print
+
 import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,7 +10,7 @@ import '../services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class FavoritasRepository extends ChangeNotifier {
-  List<Moeda> _lista = [];
+  final List<Moeda> _lista = [];
   late FirebaseFirestore db;
   late AuthService auth;
   MoedaRepository moedas;

@@ -22,7 +22,6 @@ class _CarteiraPageState extends State<CarteiraPage> {
   double saldo = 0;
   late NumberFormat real;
   late ContaRepository conta;
-
   String graficoLabel = '';
   double graficoValor = 0;
   List<Posicao> carteira = [];
@@ -144,12 +143,9 @@ class _CarteiraPageState extends State<CarteiraPage> {
                     centerSpaceRadius: 120,
                     sections: loadCarteira(),
                     pieTouchData: PieTouchData(
-                      touchCallback: (touch) => setState(() {
-                        index = touch.touchedSection!.touchedSectionIndex;
-                        setGraficoDados(index);
-                      }),
+                      
                     ),
-                  ),
+                  )
                 ),
               ),
               Column(

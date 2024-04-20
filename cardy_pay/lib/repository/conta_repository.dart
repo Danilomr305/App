@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import '../database/db.dart';
 import '../models/historico.dart';
 import '/models/moeda_models.dart';

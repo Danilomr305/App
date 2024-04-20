@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, library_private_types_in_public_api
 
 import '../configs/app_settings.dart';
 import '../repository/conta_repository.dart';
@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
-  ConfiguracoesPage({Key? key}) : super(key: key);
+  const ConfiguracoesPage({super.key});
 
   @override
   _ConfiguracoesPageState createState() => _ConfiguracoesPageState();

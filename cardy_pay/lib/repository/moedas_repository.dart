@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -154,7 +156,7 @@ class MoedaRepository extends ChangeNotifier {
   }
 
   _setupMoedasTable() async {
-    final String table = '''
+    const String table = '''
       CREATE TABLE IF NOT EXISTS moedas (
         baseId TEXT PRIMARY KEY,
         sigla TEXT,

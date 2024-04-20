@@ -56,13 +56,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     const HomePrincipal(),
 
     // Moedas 
-    MoedasPage(),
+    const MoedasPage(),
 
     // Conta Pessoal
-    ConfiguracoesPage(),
+    const ConfiguracoesPage(),
 
     // carteira da pessoal
-    CarteiraPage(),
+    const CarteiraPage(),
 
     
   ];

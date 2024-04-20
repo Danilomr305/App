@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import '../configs/app_settings.dart';
 import '../models/moeda_models.dart';
 import '../page/moedas_detalhes.dart';
@@ -8,7 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class MoedasPage extends StatefulWidget {
-  MoedasPage({Key? key}) : super(key: key);
+  const MoedasPage({super.key});
 
   @override
   _MoedasPageState createState() => _MoedasPageState();
@@ -109,8 +111,8 @@ class _MoedasPageState extends State<MoedasPage> {
                       child: Icon(Icons.check),
                     )
                   : SizedBox(
-                      child: Image.network(tabela[moeda].icone),
                       width: 40,
+                      child: Image.network(tabela[moeda].icone),
                     ),
               title: Row(
                 children: [

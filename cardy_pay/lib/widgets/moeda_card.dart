@@ -1,12 +1,12 @@
 // ignore_for_file: must_be_immutable, library_private_types_in_public_api
 
+import '../configs/app_settings.dart';
+import '../models/moeda_models.dart';
+import '../page/moedas_detalhes.dart';
+import '../repository/favoritas_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../Page/moedas_detalhes.dart';
-import '../models/moeda_models.dart';
-import '../repository/favoritas_repository.dart';
 
 class MoedaCard extends StatefulWidget {
   Moeda moeda;
@@ -18,12 +18,17 @@ class MoedaCard extends StatefulWidget {
 }
 
 class _MoedaCardState extends State<MoedaCard> {
-  NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
+  late NumberFormat real;
 
   static Map<String, Color> precoColor = <String, Color>{
     'up': Colors.teal,
     'down': Colors.indigo,
   };
+
+  readNumberFormat() {
+    final loc = context.watch<AppSettings>().locale;
+    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+  }
 
   abrirDetalhes() {
     Navigator.push(
@@ -36,6 +41,7 @@ class _MoedaCardState extends State<MoedaCard> {
 
   @override
   Widget build(BuildContext context) {
+    readNumberFormat();
     return Card(
       margin: const EdgeInsets.only(top: 12),
       elevation: 2,
@@ -74,7 +80,7 @@ class _MoedaCardState extends State<MoedaCard> {
                 ),
               ),
               Container(
-                padding:const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 decoration: BoxDecoration(
                   color: precoColor['down']!.withOpacity(0.05),
                   border: Border.all(
@@ -96,7 +102,7 @@ class _MoedaCardState extends State<MoedaCard> {
                 itemBuilder: (context) => [
                   PopupMenuItem(
                     child: ListTile(
-                      title:const Text('Remover das Favoritas'),
+                      title: const Text('Remover das Favoritas'),
                       onTap: () {
                         Navigator.pop(context);
                         Provider.of<FavoritasRepository>(context, listen: false)

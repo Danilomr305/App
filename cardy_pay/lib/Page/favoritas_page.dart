@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FavoritasPage extends StatefulWidget {
-  FavoritasPage({Key? key}) : super(key: key);
+  const FavoritasPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FavoritasPageState createState() => _FavoritasPageState();
 }
 

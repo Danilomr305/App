@@ -1,10 +1,10 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
+import '../page/home_page.dart';
+import '../page/login_page.dart';
+import '/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Page/login_page.dart';
-import '../Page/home_page.dart';
-import '../services/auth_service.dart';
 
 class AuthCheck extends StatefulWidget {
   const AuthCheck({super.key});
@@ -19,10 +19,10 @@ class _AuthCheckState extends State<AuthCheck> {
   Widget build(BuildContext context) {
     AuthService auth = Provider.of<AuthService>(context);
 
-    if (auth.isLoading)
+    if (auth.isLoading) {
       return loading();
-    else if (auth.usuario == null)
-      return LoginPage();
+    } else if (auth.usuario == null)
+      return const LoginPage();
     else
       return const HomePage();
   }
